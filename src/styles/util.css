@@ -1,0 +1,93 @@
+/* utility styles */
+
+/* flex horizontally (row) */
+.u-flexH {
+    display: flex;
+    flex-direction: row;
+}
+
+/* flex vertically (column) */
+.u-flexV {
+    display: flex;
+    flex-direction: column;
+}
+
+/* center everything in a flex container */
+.u-centerAll {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+/* center along the flex main axis */
+.u-centerMainAxis {
+    justify-content: center;
+}
+
+/* center along the flex cross axis */
+.u-centerCrossAxis {
+    align-items: center;
+}
+
+
+/* justify flex content with space-between */
+.u-spaceBetween {
+   justify-content: space-between;
+}
+
+.u-alignRight {
+    text-align: right;
+}
+
+.u-strikethrough {
+    text-decoration: line-through;
+}
+
+/* remove text decoration from standard and hover states */
+.u-noDecoration {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.u-fullWidth {
+    width: 100%;
+}
+
+.u-fullHeight {
+    height: 100%;
+}
+
+/* different sizes of bottom margin, based on sizing variables set in layout.css */
+.u-marginBottomLarge { margin-bottom: var(--spc-large); }
+.u-marginBottomMed { margin-bottom: var(--spc-med); }
+.u-marginBottomSmall { margin-bottom: var(--spc-small); }
+
+/* same for top */
+.u-marginTopLarge { margin-top: var(--spc-large); }
+.u-marginTopMed { margin-top: var(--spc-med); }
+.u-marginTopSmall { margin-top: var(--spc-small); }
+
+/* padding of different sizes for top and bottom */
+.u-paddingVSmall {
+    padding-top: var(--spc-small);
+    padding-bottom: var(--spc-small); }
+.u-paddingVMed {
+    padding-top: var(--spc-med);
+    padding-bottom: var(--spc-med); }
+.u-paddingVLarge {
+    padding-top: var(--spc-large);
+    padding-bottom: var(--spc-large); }
+
+/* padding of various sizes for left and right */
+.u-paddingHSmall {
+    padding-left: var(--spc-small);
+    padding-right: var(--spc-small); }
+.u-paddingHMed {
+    padding-left: var(--spc-med);
+    padding-right: var(--spc-med); }
+.u-paddingHLarge {
+    padding-left: var(--spc-large);
+    padding-right: var(--spc-large); }

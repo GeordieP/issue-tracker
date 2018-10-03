@@ -1,0 +1,9 @@
+.Issue-details {
+    display: flex;
+    margin-bottom: var(--spc-med);
+    justify-content: space-between;
+
+    & span {
+        color: rgba(var(--rgb-primary), 0.3);
+    }
+}

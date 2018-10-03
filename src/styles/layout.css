@@ -1,0 +1,57 @@
+:root {
+    /* layout variables */
+
+    /* spacing - for padding, margins, etc */
+    --spc-xsmall: 5px;
+    --spc-small: 10px;
+    --spc-med: 20px;
+    --spc-large: 30px;
+    --spc-xlarge: 40px;
+
+    /* for radii */
+    --rad-small: 6px;
+}
+
+.Layout {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+/* base page layout */
+.Layout--page {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "Layout_Navbar"
+        "Layout_Content";
+}
+
+/* base split layout */
+.Layout--split {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "Layout_Navbar Layout_Navbar"
+        "Layout_Sidebar Layout_Content"
+}
+
+/* navbar slot */
+.Layout-Navbar {
+    grid-area: Layout_Navbar;
+}
+
+/* sidebar slot */
+.Layout-Sidebar {
+    grid-area: Layout_Sidebar;
+    overflow: auto;
+    background: var(--col-bgPrimary);
+    box-shadow: 0 0 10px rgba(var(--rgb-bgAccentHighContrast), 0.1);
+}
+
+/* content slot */
+.Layout-Content {
+    grid-area: Layout_Content;
+    overflow: auto;
+    background: rgba(var(--rgb-bgAccentLowContrast), 0.5);
+}

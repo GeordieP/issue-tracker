@@ -1,0 +1,21 @@
+.IssueView {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        "IssueViewContent IssueViewSidebar";
+}
+
+.IssueView-content {
+    grid-area: IssueViewContent;
+    padding: var(--spc-large);
+    box-shadow: 0 0 10px rgba(var(--rgb-bgAccentHighContrast), 0.1);
+    z-index: 1;
+}
+
+.IssueView-sidebar {
+    background: var(--col-bgAccentLowContrast);
+    min-height: 100%;
+    grid-area: IssueViewSidebar;
+    padding: var(--spc-med);
+}

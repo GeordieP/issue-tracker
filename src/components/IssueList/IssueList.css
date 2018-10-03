@@ -1,0 +1,13 @@
+.IssueList-item {
+    color: rgba(var(--rgb-primary), 0.5);
+}
+
+.IssueList-title {
+    color: rgba(var(--rgb-primary), 0.8);
+}
+
+.IssueList-item--clickable {
+    &.is-selected, &:hover {
+        background: rgba(var(--rgb-bgAccentLowContrast), 0.4);
+    }
+}

@@ -1,0 +1,122 @@
+@import "./theme-blue.css";
+@import "./util.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html {
+    font-family: system-ui, sans-serif;
+    font-size: 13pt;
+    color: rgba(var(--rgb-primary), 0.7);
+}
+
+body {
+    line-height: 150%;
+    background: var(--col-bgPrimary);
+}
+
+hr {
+    background: rgba(var(--rgb-primary), 0.2);
+    border: none;
+    height: 1px;
+    width: 100%;
+}
+
+a {
+    color: var(--col-accent);
+    text-decoration: none;
+
+    &:hover, &:active {
+        text-decoration: underline;
+    }
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+h1 {
+    font-size: 2.0rem;
+    margin-bottom: 0.4rem;
+    color: rgba(var(--rgb-primary), 0.9);
+    text-decoration: underline;
+    line-height: 2.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.16rem;
+    color: rgba(var(--rgb-primary), 0.8);
+}
+
+h3 {
+    font-size: 0.8rem;
+    color: rgba(var(--rgb-primary), 0.5);
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+input[type='email'], input[type='password'], input[type='text'], textarea {
+    background: transparent;
+    border: 1px solid rgba(var(--rgb-bgAccentHighContrast), 0.15);
+    padding: var(--spc-xsmall);
+    margin: var(--spc-xsmall) 0;
+    border-radius: var(--rad-small);
+}
+
+textarea {
+    min-width: 300px;
+    height: 100px;
+}
+
+.Button {
+    background: transparent;
+    padding: var(--spc-small);
+    margin: var(--spc-xsmall) 2px;
+    border-radius: var(--rad-small);
+    cursor: pointer;
+    border: 1px solid var(--col-bgAccentLowContrast);
+    color: var(--rgb-accent);
+
+    &:hover {
+        border: 1px solid rgba(var(--rgb-bgAccentHighContrast), 0.3);
+    }
+}
+
+.Button--primary {
+    background: var(--col-accent);
+    border: none;
+    color: var(--col-primaryHighContrast);
+
+    &:hover {
+        background: rgba(var(--rgb-accent), 0.9);
+        border: none;
+    }
+}
+
+.Button--danger {
+    color: rgb(179, 68, 68);
+
+    &:hover {
+        background: rgb(215, 68, 68);
+        border-color: rgb(215, 68, 68);
+        color: var(--col-primaryHighContrast);
+    }
+}
+
+.App {
+    width: 100%;
+    height: 100%;
+}

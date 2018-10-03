@@ -1,0 +1,11 @@
+.Comment-body {
+    background: var(--col-bgPrimary);
+    margin: var(--spc-xsmall) 0;
+    padding: var(--spc-small);
+    border-radius: var(--rad-small);
+    box-shadow: 0 4px 8px rgba(var(--rgb-bgAccentHighContrast), 0.07);
+
+    & span {
+        color: rgba(var(--rgb-primary), 0.3);
+    }
+}

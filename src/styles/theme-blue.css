@@ -1,0 +1,45 @@
+/*
+    Colors
+
+    Accent color info page http://www.color-hex.com/color/2d5791
+
+    CH in comments refers to the color-hex page linked above.
+    '--col-' properties are the colors themselves, ready to use;
+    '--rgb-' properties are the individual channels of a color, so users of
+        the color can apply an alpha channel themselves. Eg:
+        color: rgba(var(--rgb-primary), 0.2);
+*/
+
+/* Content Colors - for text, icons, accents, borders, etc */
+$primary: 9, 17, 29;                                          /* CH 9th shade */
+$primaryHighContrast: 213, 221, 233;                           /* CH 9th tint */
+$accent: 45, 87, 145;                                            /* base color*/
+$bgPrimary: 250, 253, 255;                       /* 7th tint page > 10th tint */
+/* Background Colors */
+$bgAccentHighContrast: 22, 43, 71;                            /* CH 6th shade */
+$bgAccentLowContrast: 234, 238, 244;                          /* CH 10th tint */
+
+:root {
+    --rgb-primary: $primary;
+    --col-primary: rgb(var(--rgb-primary));
+
+    --rgb-primaryHighContrast: $primaryHighContrast;
+    --col-primaryHighContrast: rgb(var(--rgb-primaryHighContrast));
+
+    --rgb-accent: $accent;
+    --col-accent: rgb(var(--rgb-accent));
+
+    --rgb-bgPrimary: $bgPrimary;
+    --col-bgPrimary: rgb(var(--rgb-bgPrimary));
+
+
+    --rgb-bgAccentHighContrast: $bgAccentHighContrast;
+    --col-bgAccentHighContrast: rgb(var(--rgb-bgAccentHighContrast));
+
+    --rgb-bgAccentLowContrast: $bgAccentLowContrast;
+    --col-bgAccentLowContrast: rgb(var(--rgb-bgAccentLowContrast));
+
+    --col-mono1: 255, 255, 255;
+    --col-mono2: 240, 240, 240;
+    --col-mono3: 221, 221, 221;
+}

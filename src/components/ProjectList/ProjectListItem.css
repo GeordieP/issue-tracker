@@ -1,0 +1,10 @@
+.ProjectListItem {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+    padding: var(--spc-small) 0;
+}
+
+.ProjectListItem:last-child {
+    border-bottom: none;
+}

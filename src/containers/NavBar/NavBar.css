@@ -1,0 +1,26 @@
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background: var(--col-primary);
+    color: var(--col-primaryHighContrast);
+}
+
+.NavBar-itemList {
+    height: 100%;
+
+    & a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    & li {
+        height: 100%;
+        padding: var(--spc-med);
+
+        &:hover {
+            background: rgba(var(--rgb-bgAccentLowContrast), 0.1);
+        }
+    }
+}
