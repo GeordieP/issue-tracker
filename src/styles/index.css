@@ -84,13 +84,20 @@ textarea {
 
 .Button {
     background: var(--col-maxContrast);
-    padding: var(--spc-small) var(--spc-med);
-    margin: var(--spc-xsmall) 2px;
+    margin: 0 var(--spc-xsmall);
     border-radius: var(--rad-max);
     cursor: pointer;
     border: 2px solid rgba(var(--rgb-bgAccentHighContrast), 0.2);
     color: var(--rgb-accent);
     box-shadow: 0 2px 2px rgba(var(--rgb-bgAccentHighContrast), 0.1);
+    padding: 0 var(--spc-med);
+    height: 1.8rem;
+
+    &.circle {
+        padding: 0;
+        width: 1.8rem;
+        border-radius: 300px;
+    }
 
     &:hover {
         border-color: rgba(var(--rgb-bgAccentHighContrast), 0.4);
@@ -145,6 +152,17 @@ textarea {
     }
 }
 
+.Button--close {
+    color: var(--col-accent);
+    border-color: var(--col-accent);
+    box-shadow: 0 2px 2px rgba(var(--rgb-accent), 0.3);
+
+    &:hover {
+        background: var(--col-accent);
+        border-color: var(--col-accent);
+        color: var(--col-maxContrast);
+    }
+}
 
 .App {
     width: 100%;
