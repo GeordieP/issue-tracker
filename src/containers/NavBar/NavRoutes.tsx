@@ -37,7 +37,7 @@ const NewIssueBtn = ({ match: { params } }: Props) => (
                     <Link
                         to={`/projects/${params.projectID}/newIssue`}
                         className='u-flexV u-centerAll'>
-                        <li>+ New Issue</li>
+                        <li className='primary'>New Issue +</li>
                     </Link>
                 </PermittedRender>
             );
@@ -62,7 +62,7 @@ const NewProjectBtn = () => (
             if (data.auth_sitePermLevel > PermissionLevel.Create)
                 return (
                     <Link to="/newProject" className='u-flexV u-centerAll'>
-                        <li>+ New Project</li>
+                        <li className='primary'>New Project +</li>
                     </Link>
                 )
 

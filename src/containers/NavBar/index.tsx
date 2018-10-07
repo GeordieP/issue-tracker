@@ -24,7 +24,7 @@ class NavBar extends React.Component<Props, {}> {
         return (
             <nav className={classnames('NavBar u-fullWidth u-fullHeight', this.props.className)}>
                 <ul className="u-flexH NavBar-itemList">
-                    <Link to='/projects' title='Home'><li>🏠</li></Link>
+                    <Link to='/projects' title='Home'><li className='circle'>🏠</li></Link>
                 </ul>
 
                 <ul className="u-flexH NavBar-itemList">
@@ -74,7 +74,7 @@ const LogoutBtn = ({ username, children }: any) => (
     <ApolloConsumer>
         { (client: any) => (
             <Link to='/' onClick={logoutRequest.bind(null, client)}>
-                <li title={`Logged in as ${username}`}>Log Out</li>
+                <li className='circle' title={`Logged in as ${username}`}>🠊</li>
             </Link>
         )}
     </ApolloConsumer>
