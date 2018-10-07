@@ -45,27 +45,27 @@ pre {
 }
 
 h1 {
-    font-size: 2.0rem;
+    font-size: 1.8rem;
     margin-bottom: 0.4rem;
     color: rgba(var(--rgb-primary), 0.9);
-    text-decoration: underline;
     line-height: 2.5rem;
 }
 
 h2 {
     font-size: 1.2rem;
     margin-bottom: 0.16rem;
+    font-weight: bold;
     color: rgba(var(--rgb-primary), 0.8);
 }
 
 h3 {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     color: rgba(var(--rgb-primary), 0.5);
     font-weight: bold;
 }
 
 h4 {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
 }
 
 input[type='email'], input[type='password'], input[type='text'], textarea {

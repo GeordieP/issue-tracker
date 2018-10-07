@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 
 export default ({ parentID, onSubmit, ...props }: Props) => (
     <form className="u-flexH" onSubmit={onSubmit} {...props}>
-        <section className="u-flexV">
+        <section className="u-flexV u-fullWidth">
             <input
                 type="text"
                 name="parent"
