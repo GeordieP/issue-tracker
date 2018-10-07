@@ -74,7 +74,7 @@ export default ({ issue, onSubmit, className, ...props }: Props) => (
             <section>
                 <button
                 type="submit"
-                className="Button Button--primary"
+                className="Button Button--save"
                 data-testid='editIssue_submit'
             >
                     Save Issue

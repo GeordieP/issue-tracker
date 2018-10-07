@@ -26,7 +26,7 @@ export default ({ comment, onSubmit, className, ...props }: Props) => (
         />
 
         <section className='u-alignRight'>
-            <button type="submit" className="Button Button--primary">Save Comment</button>
+            <button type="submit" className="Button Button--save">Save Comment</button>
         </section>
     </form>
 );

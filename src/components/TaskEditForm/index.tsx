@@ -50,7 +50,7 @@ export default ({ task, onSubmit, className, ...props }: Props) => (
 
             <button
                 type="submit"
-                className="Button Button--primary"
+                className="Button Button--save"
                 data-testid='editTask_submit'
             >
                 Save Task

@@ -64,7 +64,7 @@ export default class MutableIssue extends React.Component<Props, State> {
 
                 <section className='u-marginBottomSmall'>
                     <PermittedRender requiredLevel={PermissionLevel.Edit} resource={issue}>
-                        <button onClick={this.edit} className="Button">Edit Issue</button>
+                        <button onClick={this.edit} className="Button Button--edit">Edit Issue</button>
                     </PermittedRender>
 
                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>

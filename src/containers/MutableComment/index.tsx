@@ -65,7 +65,7 @@ export default class MutableComment extends React.Component<Props, State> {
                     </PermittedRender>
 
                     <AuthorRender resource={comment}>
-                        <button onClick={this.edit} className="Button">Edit Comment</button>
+                        <button onClick={this.edit} className="Button Button--edit">Edit Comment</button>
                     </AuthorRender>
                 </div>
             </React.Fragment>

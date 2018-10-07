@@ -41,6 +41,10 @@ $bgTertiary: 243, 245, 248;
 $bgAccentHighContrast: 22, 43, 71;
 $bgAccentLowContrast: 234, 238, 244;
 
+$miscBlue: 85, 204, 255;
+$miscRed: 238, 68, 68;
+$miscGreen:	102, 187, 102;
+
 :root {
     --rgb-primary: $primary;
     --col-primary: rgb(var(--rgb-primary));
@@ -59,6 +63,15 @@ $bgAccentLowContrast: 234, 238, 244;
 
     --rgb-altAccent: $altAccent;
     --col-altAccent: rgb(var(--rgb-altAccent));
+
+    --rgb-miscBlue: $miscBlue;
+    --col-miscBlue: rgb(var(--rgb-miscBlue));
+
+    --rgb-miscRed: $miscRed;
+    --col-miscRed: rgb(var(--rgb-miscRed));
+
+    --rgb-miscGreen: $miscGreen;
+    --col-miscGreen: rgb(var(--rgb-miscGreen));
 
 
     --rgb-bgPrimary: $bgPrimary;

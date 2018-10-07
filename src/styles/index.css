@@ -88,11 +88,12 @@ textarea {
     margin: var(--spc-xsmall) 2px;
     border-radius: var(--rad-max);
     cursor: pointer;
-    border: 1px solid var(--col-bgAccentLowContrast);
+    border: 2px solid rgba(var(--rgb-bgAccentHighContrast), 0.2);
     color: var(--rgb-accent);
+    box-shadow: 0 2px 2px rgba(var(--rgb-bgAccentHighContrast), 0.1);
 
     &:hover {
-        border: 1px solid rgba(var(--rgb-bgAccentHighContrast), 0.3);
+        border-color: rgba(var(--rgb-bgAccentHighContrast), 0.4);
     }
 }
 
@@ -109,14 +110,41 @@ textarea {
 }
 
 .Button--danger {
-    color: rgb(238, 68, 68);
+    color: var(--col-miscRed);
+    border-color: var(--col-miscRed);
+    box-shadow: 0 2px 2px rgba(var(--rgb-miscRed), 0.3);
 
     &:hover {
-        background: rgb(238, 68, 68);
-        border-color: rgb(238, 68, 68);
-        color: var(--col-primaryHighContrast);
+        background: var(--col-miscRed);
+        border-color: var(--col-miscRed);
+        color: var(--col-maxContrast);
     }
 }
+
+.Button--edit {
+    color: var(--col-miscBlue);
+    border-color: var(--col-miscBlue);
+    box-shadow: 0 2px 2px rgba(var(--rgb-miscBlue), 0.3);
+
+    &:hover {
+        background: var(--col-miscBlue);
+        border-color: var(--col-miscBlue);
+        color: var(--col-maxContrast);
+    }
+}
+
+.Button--save {
+    color: var(--col-miscGreen);
+    border-color: var(--col-miscGreen);
+    box-shadow: 0 2px 2px rgba(var(--rgb-miscGreen), 0.3);
+
+    &:hover {
+        background: var(--col-miscGreen);
+        border-color: var(--col-miscGreen);
+        color: var(--col-maxContrast);
+    }
+}
+
 
 .App {
     width: 100%;

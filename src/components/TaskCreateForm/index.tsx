@@ -30,7 +30,7 @@ export default ({ parentID, onSubmit, ...props }: Props) => (
                 data-testid='createTask_body'
             />
 
-            <section className='u-flexH u-spaceBetween'>
+            <section className='u-flexH u-spaceBetween u-centerCrossAxis'>
                 <div>
                     <label htmlFor="createTask_openStatus">Open </label>
                     <input
