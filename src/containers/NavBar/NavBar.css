@@ -3,8 +3,8 @@
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    background: var(--col-primary);
-    color: var(--col-primaryHighContrast);
+    background: linear-gradient(to right, var(--col-accent), var(--col-altAccent));
+    color: var(--col-maxContrast)
 }
 
 .NavBar-itemList {

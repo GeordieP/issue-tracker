@@ -1,0 +1,61 @@
+/*
+    Colors
+
+    Accent color info page http://www.color-hex.com/color/2d5791
+
+    Accent color 1 https://www.colorhexa.com/817fff
+    Accent color 2 https://www.colorhexa.com/6987FF
+
+    CH in comments refers to the colorhexa page linked above.
+
+    '--col-' properties are the colors themselves, ready to use;
+    '--rgb-' properties are the individual channels of a color, so users of
+        the color can apply an alpha channel themselves. Eg:
+        color: rgba(var(--rgb-primary), 0.2);
+*/
+
+/* Content Colors - for text, icons, accents, borders, etc */
+$maxContrast: 255, 255, 255;
+$minContrast: 0, 0, 0;
+$primary: 1, 0, 68;                                          /* CH 4th shade */
+$primaryHighContrast: 206,205,255;                           /* CH 11th tint */
+$accent: 129, 127, 255;                                            /* base color*/
+$altAccent: 105, 135, 255;                                            /* base color alt*/
+$bgPrimary: 250, 253, 255;                       /* 7th tint page > 10th tint */
+/* Background Colors */
+$bgAccentHighContrast: 22, 43, 71;                            /* CH 6th shade */
+$bgAccentLowContrast: 234, 238, 244;                          /* CH 10th tint */
+
+:root {
+    --rgb-primary: $primary;
+    --col-primary: rgb(var(--rgb-primary));
+
+    --rgb-maxContrast: $maxContrast;
+    --col-maxContrast: rgb(var(--rgb-maxContrast));
+
+    --rgb-minContrast: $minContrast;
+    --col-minContrast: rgb(var(--rgb-minContrast));
+
+    --rgb-primaryHighContrast: $primaryHighContrast;
+    --col-primaryHighContrast: rgb(var(--rgb-primaryHighContrast));
+
+    --rgb-accent: $accent;
+    --col-accent: rgb(var(--rgb-accent));
+
+    --rgb-altAccent: $altAccent;
+    --col-altAccent: rgb(var(--rgb-altAccent));
+
+    --rgb-bgPrimary: $bgPrimary;
+    --col-bgPrimary: rgb(var(--rgb-bgPrimary));
+
+
+    --rgb-bgAccentHighContrast: $bgAccentHighContrast;
+    --col-bgAccentHighContrast: rgb(var(--rgb-bgAccentHighContrast));
+
+    --rgb-bgAccentLowContrast: $bgAccentLowContrast;
+    --col-bgAccentLowContrast: rgb(var(--rgb-bgAccentLowContrast));
+
+    --col-mono1: 255, 255, 255;
+    --col-mono2: 240, 240, 240;
+    --col-mono3: 221, 221, 221;
+}
