@@ -69,11 +69,12 @@ h4 {
 }
 
 input[type='email'], input[type='password'], input[type='text'], textarea {
-    background: transparent;
-    border: 1px solid rgba(var(--rgb-bgAccentHighContrast), 0.15);
+    background: rgba(var(--rgb-maxContrast), 0.5);
+    border: 2px solid rgba(var(--rgb-bgAccentHighContrast), 0.08);
     padding: var(--spc-xsmall);
     margin: var(--spc-xsmall) 0;
     border-radius: var(--rad-small);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.02);
 }
 
 textarea {
@@ -82,10 +83,10 @@ textarea {
 }
 
 .Button {
-    background: transparent;
-    padding: var(--spc-small);
+    background: var(--col-maxContrast);
+    padding: var(--spc-small) var(--spc-med);
     margin: var(--spc-xsmall) 2px;
-    border-radius: var(--rad-small);
+    border-radius: var(--rad-max);
     cursor: pointer;
     border: 1px solid var(--col-bgAccentLowContrast);
     color: var(--rgb-accent);
@@ -96,9 +97,10 @@ textarea {
 }
 
 .Button--primary {
-    background: var(--col-accent);
+    background: linear-gradient(to left, var(--col-accent), var(--col-altAccent));
     border: none;
-    color: var(--col-primaryHighContrast);
+    color: var(--col-maxContrast);
+    box-shadow: 0 3px 4px rgba(var(--rgb-accent), 0.3);
 
     &:hover {
         background: rgba(var(--rgb-accent), 0.9);
@@ -107,11 +109,11 @@ textarea {
 }
 
 .Button--danger {
-    color: rgb(179, 68, 68);
+    color: rgb(238, 68, 68);
 
     &:hover {
-        background: rgb(215, 68, 68);
-        border-color: rgb(215, 68, 68);
+        background: rgb(238, 68, 68);
+        border-color: rgb(238, 68, 68);
         color: var(--col-primaryHighContrast);
     }
 }

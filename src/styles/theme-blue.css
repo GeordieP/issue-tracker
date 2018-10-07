@@ -1,3 +1,15 @@
+:root {
+    /* spacing - for padding, margins, etc */
+    --spc-xsmall: 5px;
+    --spc-small: 10px;
+    --spc-med: 20px;
+    --spc-large: 30px;
+    --spc-xlarge: 40px;
+
+    /* for radii */
+    --rad-small: 6px;
+}
+
 /*
     Colors
 

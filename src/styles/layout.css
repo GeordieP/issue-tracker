@@ -1,17 +1,3 @@
-:root {
-    /* layout variables */
-
-    /* spacing - for padding, margins, etc */
-    --spc-xsmall: 5px;
-    --spc-small: 10px;
-    --spc-med: 20px;
-    --spc-large: 30px;
-    --spc-xlarge: 40px;
-
-    /* for radii */
-    --rad-small: 6px;
-}
-
 .Layout {
     display: grid;
     width: 100%;
@@ -53,5 +39,5 @@
 .Layout-Content {
     grid-area: Layout_Content;
     overflow: auto;
-    background: rgba(var(--rgb-bgAccentLowContrast), 0.5);
+    background: var(--col-bgSecondary);
 }

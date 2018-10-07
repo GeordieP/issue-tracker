@@ -14,7 +14,7 @@
 }
 
 .IssueView-sidebar {
-    background: var(--col-bgAccentLowContrast);
+    background: var(--col-bgTertiary);
     min-height: 100%;
     grid-area: IssueViewSidebar;
     padding: var(--spc-med);
