@@ -1,32 +1,39 @@
 import * as React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-import { taskMock, extraPropsMock } from 'testUtil/mocks';
+import { taskMock } from 'testUtil/mocks';
 
 // components
-import TaskEditForm from './';
+import TaskEditSegments from './Segments';
 
-const spy = jest.fn();
+describe('Task edit form segments', () => {
+    const spy = jest.fn();
 
-const { getByText, getByTestId, container: { firstChild } } = render(
-    <TaskEditForm task={taskMock} onSubmit={spy} {...extraPropsMock} />
-);
+    const { getByTestId } = render(
+        <TaskEditSegments task={taskMock} onSubmit={spy}>
+            {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
+                <React.Fragment>
+                    <TitleField />
+                    <BodyField />
+                    <StatusField />
+                    <SubmitBtn />
+                </React.Fragment>
+            )}
+        </TaskEditSegments>
+    );
 
-test('task ID field is readonly, disabled, and hidden', () => {
-    const taskIDField = getByTestId('editTask_taskID');
-
-    ['readonly', 'hidden', 'disabled'].forEach(attr => {
-        expect(taskIDField).toHaveAttribute(attr);
+    test('All fields are rendered', () => {
+        expect(getByTestId('editTask_title')).toBeVisible();
+        expect(getByTestId('editTask_body')).toBeVisible();
+        expect(getByTestId('editTask_openStatus')).toBeVisible();
+        expect(getByTestId('editTask_submit')).toBeVisible();
     });
-});
 
-test('clicking submit calls onSubmit prop', () => {
-    expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.submit(getByText('Save Task'));
-    expect(spy).toHaveBeenCalledTimes(1);
-});
+    test('task ID field is readonly, disabled, and hidden', () => {
+        const taskIDField = getByTestId('editTask_taskID');
 
-test('renders with additional props', () => {
-    expect(firstChild).toHaveAttribute('title', extraPropsMock.title);
-    expect(firstChild).toHaveClass(extraPropsMock.className);
+        ['readonly', 'hidden', 'disabled'].forEach(attr => {
+            expect(taskIDField).toHaveAttribute(attr);
+        });
+    });
 });

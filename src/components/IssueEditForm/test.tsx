@@ -6,7 +6,6 @@ import { issueMock, extraPropsMock } from 'testUtil/mocks';
 
 // components
 import IssueEditForm from './';
-
 import IssueEditSegments from './Segments';
 
 describe('Issue Edit Form Segments', () => {
@@ -41,7 +40,7 @@ describe('Issue Edit Form Segments', () => {
 describe('Issue Edit Form', async () => {
     const spy = jest.fn();
 
-    const { getByTestId, container: { firstChild } } = render(
+    const { getByTestId } = render(
         <IssueEditForm issue={issueMock} onSubmit={spy} {...extraPropsMock} />
     );
 
@@ -59,10 +58,5 @@ describe('Issue Edit Form', async () => {
         expect(spy).toHaveBeenCalledTimes(0);
         fireEvent.click(getByTestId('editIssue_submit'));
         expect(spy).toHaveBeenCalledTimes(1);
-    });
-
-    test('renders with additional props', () => {
-        expect(firstChild).toHaveAttribute('title', extraPropsMock.title);
-        expect(firstChild).toHaveClass(extraPropsMock.className);
     });
 });

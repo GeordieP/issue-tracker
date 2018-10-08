@@ -10,7 +10,7 @@ import { PermissionLevel } from 'src/types/Permissions';
 
 // components
 import TaskDetails from 'src/components/Task/Segments';
-import TaskEditForm from 'src/components/TaskEditForm';
+import TaskEditForm from 'src/components/TaskEditForm/Segments';
 
 interface Props {
     task: Task;
@@ -64,24 +64,22 @@ export default class MutableTask extends React.Component<Props, State> {
                         <div>
                             <section className='u-flexH u-centerCrossAxis u-fullWidth'>
                                 <div className='u-flexH'>
-                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
-                                        <button onClick={this.edit} className="Button Button--edit circle">/</button>
-                                    </PermittedRender>
-
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
                                         <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                    </PermittedRender>
+
+                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
+                                        <button onClick={this.edit} className="Button Button--edit circle">/</button>
                                     </PermittedRender>
                                 </div>
 
                                 <Title />
                             </section>
-
                             <Status />
                             <Body />
                         </div>
                     )}
                 </TaskDetails>
-
             </React.Fragment>
         );
     }
@@ -91,13 +89,27 @@ export default class MutableTask extends React.Component<Props, State> {
 
         return (
             <React.Fragment>
-                <TaskEditForm task={task} onSubmit={submitFormMutation(onUpdate)} />
+                <TaskEditForm task={task} onSubmit={submitFormMutation(onUpdate)}>
+                    {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
+                        <React.Fragment>
+                            <section className='u-flexV u-fullWidth'>
+                                <div className='u-flexH u-centerCrossAxis'>
+                                    <div className='u-flexH'>
+                                        <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
+                                            <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                        </PermittedRender>
+                                        <button onClick={this.details} className="Button circle">C</button>
+                                        <SubmitBtn />
+                                    </div>
+                                    <TitleField />
+                                </div>
 
-                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                    <button onClick={onDelete} className="Button Button--danger">Delete Task</button>
-                </PermittedRender>
-
-                <button onClick={this.details} className="Button">Cancel</button>
+                                <StatusField />
+                                <BodyField />
+                            </section>
+                        </React.Fragment>
+                    )}
+                </TaskEditForm>
             </React.Fragment>
         );
     }

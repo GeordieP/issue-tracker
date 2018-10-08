@@ -10,13 +10,9 @@ interface Props {
     className?: string;
 }
 
-const callMe = () => {
-    console.log('i was called');
-}
-
 // Default layout for issue edit form
 export default ({ issue, onSubmit, className }: Props) => (
-    <IssueEditSegments issue={issue} onSubmit={callMe} className={className}>
+    <IssueEditSegments issue={issue} onSubmit={onSubmit} className={className}>
         {({ TitleField, BodyField, SeverityField, TypeField, StatusField, SubmitBtn }: any) => (
             <React.Fragment>
                 <section className='u-flexV u-fullWidth'>

@@ -84,7 +84,7 @@ export default ({ issue, onSubmit, children, className }: Props) => {
             type="submit"
             className="Button Button--save circle"
             data-testid='editIssue_submit'
-            title='Save Issue'
+            title='S'
         >
                 S
             </button>
