@@ -9,7 +9,7 @@ import { PermissionLevel } from 'src/types/Permissions';
 
 // components
 import CommentEditForm from 'src/components/CommentEditForm/Segments';
-import CommentDetails from 'src/components/Comment';
+import CommentDetails from 'src/components/Comment/Segments';
 
 interface Props {
     parentID: ID;
@@ -56,18 +56,26 @@ export default class MutableComment extends React.Component<Props, State> {
         const { comment } = this.props;
 
         return (
-            <React.Fragment >
-                <CommentDetails comment={comment} className='MutableComment-commentDetails' />
+            <React.Fragment>
+                <CommentDetails comment={comment}>
+                    {({ Author, Body }: any) => (
+                        <React.Fragment>
+                            <section className='u-flexH'>
+                                <Author />
 
-                <div className='u-alignRight'>
-                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                        <button onClick={onDelete} className="Button Button--danger circle">X</button>
-                    </PermittedRender>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                    <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                </PermittedRender>
 
-                    <AuthorRender resource={comment}>
-                        <button onClick={this.edit} className="Button Button--edit circle">E</button>
-                    </AuthorRender>
-                </div>
+                                <AuthorRender resource={comment}>
+                                    <button onClick={this.edit} className="Button Button--edit circle">E</button>
+                                </AuthorRender>
+                            </section>
+
+                            <Body />
+                        </React.Fragment>
+                    )}
+                </CommentDetails>
             </React.Fragment>
         );
     }
@@ -76,12 +84,11 @@ export default class MutableComment extends React.Component<Props, State> {
         const { comment } = this.props;
 
         return (
-            <div className='u-alignRight' style={{ background: 'var(--col-mono2)' }}>
+            <div>
                 <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)}>
                     {({ BodyField, SubmitBtn }: any) => (
                         <React.Fragment>
-                            <BodyField />
-                            <div className='u-fullWidth u-alignRight'>
+                            <div>
                                 <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
                                     <button onClick={onDelete} className="Button Button--danger circle">X</button>
                                 </PermittedRender>
@@ -89,6 +96,7 @@ export default class MutableComment extends React.Component<Props, State> {
                                 <button onClick={this.details} className="Button circle">C</button>
                                 <SubmitBtn />
                             </div>
+                            <BodyField />
                         </React.Fragment>
                     )}
                 </CommentEditForm>
