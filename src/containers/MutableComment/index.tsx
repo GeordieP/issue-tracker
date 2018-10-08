@@ -8,7 +8,7 @@ import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
 
 // components
-import CommentEditForm from 'src/components/CommentEditForm';
+import CommentEditForm from 'src/components/CommentEditForm/Segments';
 import CommentDetails from 'src/components/Comment';
 
 interface Props {
@@ -61,11 +61,11 @@ export default class MutableComment extends React.Component<Props, State> {
 
                 <div className='u-alignRight'>
                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                        <button onClick={onDelete} className="Button Button--danger">Delete Comment</button>
+                        <button onClick={onDelete} className="Button Button--danger circle">X</button>
                     </PermittedRender>
 
                     <AuthorRender resource={comment}>
-                        <button onClick={this.edit} className="Button Button--edit">Edit Comment</button>
+                        <button onClick={this.edit} className="Button Button--edit circle">E</button>
                     </AuthorRender>
                 </div>
             </React.Fragment>
@@ -77,13 +77,21 @@ export default class MutableComment extends React.Component<Props, State> {
 
         return (
             <div className='u-alignRight' style={{ background: 'var(--col-mono2)' }}>
-                <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)} />
+                <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)}>
+                    {({ BodyField, SubmitBtn }: any) => (
+                        <React.Fragment>
+                            <BodyField />
+                            <div className='u-fullWidth u-alignRight'>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                    <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                </PermittedRender>
 
-                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                    <button onClick={onDelete} className="Button Button--danger">Delete Comment</button>
-                </PermittedRender>
-
-                <button onClick={this.details} className="Button">Cancel</button>
+                                <button onClick={this.details} className="Button circle">C</button>
+                                <SubmitBtn />
+                            </div>
+                        </React.Fragment>
+                    )}
+                </CommentEditForm>
             </div>
         );
     }
