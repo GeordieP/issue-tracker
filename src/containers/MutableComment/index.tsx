@@ -86,9 +86,11 @@ export default class MutableComment extends React.Component<Props, State> {
         return (
             <div>
                 <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)}>
-                    {({ BodyField, SubmitBtn }: any) => (
+                    {({ Author, BodyField, SubmitBtn }: any) => (
                         <React.Fragment>
-                            <div>
+                            <div className='u-flexH'>
+                                <Author />
+
                                 <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
                                     <button onClick={onDelete} className="Button Button--danger circle">X</button>
                                 </PermittedRender>

@@ -10,12 +10,13 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 
 export default ({ comment, onSubmit }: Props) => (
     <CommentEditSegments comment={comment} onSubmit={onSubmit}>
-        {({ BodyField, SubmitBtn }: any) => (
+        {({ Author, BodyField, SubmitBtn }: any) => (
             <React.Fragment>
-                <BodyField />
-                <section className='u-alignRight'>
+                <div className='u-flexH'>
+                    <Author />
                     <SubmitBtn />
-                </section>
+                </div>
+                <BodyField />
             </React.Fragment>
         )}
     </CommentEditSegments>

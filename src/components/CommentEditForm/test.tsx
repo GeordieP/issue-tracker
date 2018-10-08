@@ -9,10 +9,11 @@ import CommentEditSegments from './Segments';
 describe('Comment edit form segments', () => {
     const spy = jest.fn();
 
-    const { getByTestId } = render(
+    const { getByText, getByTestId } = render(
         <CommentEditSegments comment={commentMock} onSubmit={spy}>
-            {({ BodyField, SubmitBtn }: any) => (
+            {({ Author, BodyField, SubmitBtn }: any) => (
                 <React.Fragment>
+                    <Author />
                     <BodyField />
                     <SubmitBtn />
                 </React.Fragment>
@@ -21,6 +22,7 @@ describe('Comment edit form segments', () => {
     );
 
     test('All fields are rendered', () => {
+        expect(getByText(commentMock.creator.username)).toBeVisible();
         expect(getByTestId('editComment_body')).toBeVisible();
         expect(getByTestId('editComment_submit')).toBeVisible();
     });

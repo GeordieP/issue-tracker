@@ -9,6 +9,10 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 }
 
 export default ({ comment, onSubmit, className, children }: Props) => {
+    const renderAuthor = () => (
+        <div className='EditComment-username'>{ comment.creator.username }</div>
+    );
+
     const renderBodyField = () => (
         <textarea
             name="body"
@@ -39,6 +43,7 @@ export default ({ comment, onSubmit, className, children }: Props) => {
 
             {
                 children({
+                    Author: renderAuthor,
                     BodyField: renderBodyField,
                     SubmitBtn: renderSubmitBtn,
                 })
