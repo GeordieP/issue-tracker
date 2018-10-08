@@ -24,6 +24,10 @@ body {
     background: var(--col-bgPrimary);
 }
 
+svg {
+    display: block;
+}
+
 hr {
     background: rgba(var(--rgb-primary), 0.1);
     border: none;

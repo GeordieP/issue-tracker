@@ -5,6 +5,7 @@ import { Query, QueryResult, ApolloConsumer } from 'react-apollo';
 import { authStatus } from 'src/util/graphql/clientQueries';
 import history from 'src/util/history';
 import * as classnames from 'classnames';
+import { Home as HomeIcon, LogOut as LogoutIcon } from 'react-feather';
 
 import NavRoutes from './NavRoutes';
 
@@ -24,7 +25,11 @@ class NavBar extends React.Component<Props, {}> {
         return (
             <nav className={classnames('NavBar u-fullWidth u-fullHeight', this.props.className)}>
                 <ul className="u-flexH NavBar-itemList">
-                    <Link to='/projects' title='Home'><li className='circle'>🏠</li></Link>
+                    <Link to='/projects' title='Home'>
+                        <li className='u-flexV u-centerBoth circle'>
+                            <HomeIcon />
+                        </li>
+                    </Link>
                 </ul>
 
                 <ul className="u-flexH NavBar-itemList">
@@ -74,7 +79,9 @@ const LogoutBtn = ({ username, children }: any) => (
     <ApolloConsumer>
         { (client: any) => (
             <Link to='/' onClick={logoutRequest.bind(null, client)}>
-                <li className='circle' title={`Logged in as ${username}`}>🠊</li>
+                <li className='u-flexV u-centerBoth circle' title={`Logged in as ${username}`}>
+                    <LogoutIcon />
+                </li>
             </Link>
         )}
     </ApolloConsumer>
