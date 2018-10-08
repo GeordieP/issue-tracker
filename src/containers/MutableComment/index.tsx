@@ -58,19 +58,27 @@ export default class MutableComment extends React.Component<Props, State> {
         return (
             <React.Fragment>
                 <CommentDetails comment={comment}>
-                    {({ Author, Body }: any) => (
+                    {({ Author, Date, Body }: any) => (
                         <React.Fragment>
-                            <section className='u-flexH'>
-                                <Author />
+                            <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
+                                <div className='u-flexH'>
+                                    <Author />
 
-                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                    <button onClick={onDelete} className="SmallButton" title='Delete Comment'>X</button>
-                                </PermittedRender>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                        <button onClick={onDelete} className="SmallButton" title='Delete Comment'>X</button>
+                                    </PermittedRender>
 
-                                <AuthorRender resource={comment}>
-                                    <button onClick={this.edit} className="SmallButton" title='Edit Comment'>E</button>
-                                </AuthorRender>
-                            </section>
+                                    <AuthorRender resource={comment}>
+                                        <button onClick={this.edit} className="SmallButton" title='Edit Comment'>E</button>
+                                    </AuthorRender>
+                                </div>
+
+                                <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
+
+                                <div style={{ flexShrink: 0 }}>
+                                    <Date />
+                                </div>
+                            </div>
 
                             <Body />
                         </React.Fragment>
@@ -86,17 +94,25 @@ export default class MutableComment extends React.Component<Props, State> {
         return (
             <div>
                 <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)}>
-                    {({ Author, BodyField, SubmitBtn }: any) => (
+                    {({ Author, Date, BodyField, SubmitBtn }: any) => (
                         <React.Fragment>
-                            <div className='u-flexH'>
-                                <Author />
+                            <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
+                                <div className='u-flexH'>
+                                    <Author />
 
-                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                    <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' >X</button>
-                                </PermittedRender>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                        <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' >X</button>
+                                    </PermittedRender>
 
-                                <button onClick={this.details} className="SmallButton" title='Cancel Edit'>C</button>
-                                <SubmitBtn />
+                                    <button onClick={this.details} className="SmallButton" title='Cancel Edit'>C</button>
+                                    <SubmitBtn />
+                                </div>
+
+                                <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
+
+                                <div style={{ flexShrink: 0 }}>
+                                    <Date />
+                                </div>
                             </div>
                             <BodyField />
                         </React.Fragment>

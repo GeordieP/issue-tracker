@@ -92,6 +92,7 @@ export const getComments = gql(`
             creator { id username }
             body
             userPermissions { userID level }
+            dateUpdated
         }
     }
 `);

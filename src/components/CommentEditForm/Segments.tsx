@@ -2,6 +2,8 @@ import * as React from 'react';
 import { HTMLAttributes, FormEventHandler } from 'react';
 import * as classnames from 'classnames';
 
+import './CommentEditForm.css';
+
 interface Props extends HTMLAttributes<HTMLFormElement> {
     comment: Comment;
     onSubmit: FormEventHandler;
@@ -10,7 +12,11 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 
 export default ({ comment, onSubmit, className, children }: Props) => {
     const renderAuthor = () => (
-        <div className='EditComment-username'>{ comment.creator.username }</div>
+        <div className='Comment-author'>{ comment.creator.username }</div>
+    );
+
+    const renderDate = () => (
+        <div className='Comment-date'>{ new Date(comment.dateUpdated).toDateString() }</div>
     );
 
     const renderBodyField = () => (
@@ -32,7 +38,7 @@ export default ({ comment, onSubmit, className, children }: Props) => {
     );
 
     return (
-        <form onSubmit={onSubmit} className={classnames('u-flexV', className)}>
+        <form onSubmit={onSubmit} className={classnames('CommentEditForm u-flexV', className)}>
             <input
                 type="text"
                 name="id"
@@ -44,6 +50,7 @@ export default ({ comment, onSubmit, className, children }: Props) => {
             {
                 children({
                     Author: renderAuthor,
+                    Date: renderDate,
                     BodyField: renderBodyField,
                     SubmitBtn: renderSubmitBtn,
                 })

@@ -11,15 +11,26 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 export default ({ comment, children }: Props) => {
     const renderAuthor = () => (
-        <div className='Comment-username'>{ comment.creator.username }</div>
+        <div className='Comment-author'>{ comment.creator.username }</div>
+    );
+
+    const renderDate = () => (
+        <div className='Comment-date'>{ new Date(comment.dateUpdated).toDateString() }</div>
     );
 
     const renderBody = () => (
         <pre className='Comment-body'>{ comment.body}</pre>
     );
 
-    return children({
-        Author: renderAuthor,
-        Body: renderBody,
-    });
+    return (
+        <div className='Comment'>
+            {
+                children({
+                    Author: renderAuthor,
+                    Date: renderDate,
+                    Body: renderBody,
+                })
+            }
+        </div>
+    );
 }
