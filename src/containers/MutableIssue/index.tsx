@@ -10,7 +10,7 @@ import { PermissionLevel } from 'src/types/Permissions';
 
 // components
 import IssueSegments from 'src/components/Issue/Segments';
-import IssueEditForm from 'src/components/IssueEditForm';
+import IssueEditFormSegments from 'src/components/IssueEditForm/Segments';
 
 interface Props {
     issue: Issue
@@ -64,33 +64,33 @@ export default class MutableIssue extends React.Component<Props, State> {
                     {({ Title, Body, Details }: { Title: any, Body: any, Details: any }) => (
                         <React.Fragment>
                             <div className='u-flexH u-centerCrossAxis'>
-                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
-                                    <button
-                                        onClick={onDelete}
-                                        className="Button Button--danger circle"
-                                        title='Delete Issue'
-                                    >
-                                        X
-                                    </button>
-                                </PermittedRender>
 
-                                <PermittedRender requiredLevel={PermissionLevel.Edit} resource={issue}>
-                                    <button
-                                        onClick={this.edit}
-                                        className="Button Button--edit circle"
-                                        title='Edit Issue'
-                                    >
-                                        /
-                                    </button>
+                                <div className='u-flexH'>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
+                                        <button
+                                            onClick={onDelete}
+                                            className="Button Button--danger circle"
+                                            title='Delete Issue'>
+                                            X
+                                        </button>
+                                    </PermittedRender>
 
-                                    {/* TODO: Run a mutation to close issue */}
-                                    <button
-                                        className="Button Button--close circle"
-                                        title='Close Issue'
-                                    >
-                                        ✔
-                                    </button>
-                                </PermittedRender>
+                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={issue}>
+                                        <button
+                                            onClick={this.edit}
+                                            className="Button Button--edit circle"
+                                            title='Edit Issue'>
+                                            E
+                                        </button>
+
+                                        {/* TODO: Run a mutation to close issue */}
+                                        <button
+                                            className="Button Button--close circle"
+                                            title='Close Issue'>
+                                            ✔
+                                        </button>
+                                    </PermittedRender>
+                                </div>
 
                                 <Title />
                             </div>
@@ -109,12 +109,36 @@ export default class MutableIssue extends React.Component<Props, State> {
 
         return (
             <React.Fragment>
-                <IssueEditForm issue={issue} onSubmit={submitFormMutation(onUpdate)} />
-                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
-                    <button onClick={onDelete} className="Button Button--danger">Delete Issue</button>
-                </PermittedRender>
+                <IssueEditFormSegments issue={issue} onSubmit={submitFormMutation(onUpdate)}>
+                    {({ TitleField, BodyField, SeverityField, TypeField, StatusField, SubmitBtn }: any) => (
+                        <section className='u-flexV u-fullWidth'>
+                            <section className='u-flexH u-centerCrossAxis u-fullWidth'>
+                                <div className='u-flexH'>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
+                                        <button
+                                            onClick={onDelete}
+                                            className="Button Button--danger circle"
+                                            title='Delete Issue'
+                                        >
+                                            X
+                                        </button>
+                                    </PermittedRender>
+                                    <SubmitBtn />
+                                    <button onClick={this.details} className="Button circle" title='Cancel Edit'>C</button>
+                                </div>
+                                <TitleField />
+                            </section>
 
-                <button onClick={this.details} className="Button">Cancel</button>
+                            <BodyField />
+
+                            <section className='u-flexH u-spaceBetween'>
+                                <SeverityField />
+                                <TypeField />
+                                <StatusField />
+                            </section>
+                        </section>
+                    )}
+                </IssueEditFormSegments>
             </React.Fragment>
         );
     }

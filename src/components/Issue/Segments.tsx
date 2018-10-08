@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 export default ({ issue, children, ...props }: Props) => {
     const renderTitle = () => (
-        <h1>{issue.title}</h1>
+        <h1 className='u-noMargin'>{issue.title}</h1>
     );
 
     const renderBody = () => (

@@ -60,6 +60,14 @@
     height: 100%;
 }
 
+.u-noMargin {
+    margin: 0;
+}
+
+.u-noPadding {
+    padding: 0;
+}
+
 /* different sizes of bottom margin, based on sizing variables set in layout.css */
 .u-marginBottomLarge { margin-bottom: var(--spc-large); }
 .u-marginBottomMed { margin-bottom: var(--spc-med); }
