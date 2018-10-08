@@ -123,8 +123,8 @@ export default class MutableIssue extends React.Component<Props, State> {
                                             X
                                         </button>
                                     </PermittedRender>
-                                    <SubmitBtn />
                                     <button onClick={this.details} className="Button circle" title='Cancel Edit'>C</button>
+                                    <SubmitBtn />
                                 </div>
                                 <TitleField />
                             </section>

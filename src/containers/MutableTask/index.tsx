@@ -9,8 +9,8 @@ import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
 
 // components
+import TaskDetails from 'src/components/Task/Segments';
 import TaskEditForm from 'src/components/TaskEditForm';
-import TaskDetails from 'src/components/Task';
 
 interface Props {
     task: Task;
@@ -59,15 +59,29 @@ export default class MutableTask extends React.Component<Props, State> {
 
         return (
             <React.Fragment>
-                <TaskDetails task={task} />
+                <TaskDetails task={task}>
+                    {({ Title, Body, Status }: any) => (
+                        <div>
+                            <section className='u-flexH u-centerCrossAxis u-fullWidth'>
+                                <div className='u-flexH'>
+                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
+                                        <button onClick={this.edit} className="Button Button--edit circle">/</button>
+                                    </PermittedRender>
 
-                <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
-                    <button onClick={this.edit} className="Button">Edit Task</button>
-                </PermittedRender>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
+                                        <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                    </PermittedRender>
+                                </div>
 
-                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                    <button onClick={onDelete} className="Button Button--danger">Delete Task</button>
-                </PermittedRender>
+                                <Title />
+                            </section>
+
+                            <Status />
+                            <Body />
+                        </div>
+                    )}
+                </TaskDetails>
+
             </React.Fragment>
         );
     }
