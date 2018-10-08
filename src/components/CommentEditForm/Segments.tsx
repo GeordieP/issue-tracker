@@ -25,7 +25,7 @@ export default ({ comment, onSubmit, className, children }: Props) => {
     const renderSubmitBtn = () => (
         <button
             type="submit"
-            className="Button Button--save circle"
+            className="SmallButton SmallButton--save"
             data-testid='editComment_submit'>
             S
         </button>

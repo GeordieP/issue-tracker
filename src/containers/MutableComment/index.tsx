@@ -64,11 +64,11 @@ export default class MutableComment extends React.Component<Props, State> {
                                 <Author />
 
                                 <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                    <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                    <button onClick={onDelete} className="SmallButton" title='Delete Comment'>X</button>
                                 </PermittedRender>
 
                                 <AuthorRender resource={comment}>
-                                    <button onClick={this.edit} className="Button Button--edit circle">E</button>
+                                    <button onClick={this.edit} className="SmallButton" title='Edit Comment'>E</button>
                                 </AuthorRender>
                             </section>
 
@@ -92,10 +92,10 @@ export default class MutableComment extends React.Component<Props, State> {
                                 <Author />
 
                                 <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                    <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                    <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' >X</button>
                                 </PermittedRender>
 
-                                <button onClick={this.details} className="Button circle">C</button>
+                                <button onClick={this.details} className="SmallButton" title='Cancel Edit'>C</button>
                                 <SubmitBtn />
                             </div>
                             <BodyField />
