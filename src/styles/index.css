@@ -61,7 +61,6 @@ h2 {
 h3 {
     /* font-size: 0.8rem; */
     color: rgba(var(--rgb-primary), 0.5);
-    font-weight: bold;
 }
 
 h4 {

@@ -105,6 +105,7 @@ export const getTasksForIssue = gql(`
             title
             body
             openStatus
+            dateUpdated
         }
     }
 `);
@@ -117,6 +118,7 @@ export const getTask = gql(`
             creator { id username }
             openStatus
             body
+            dateUpdated
             userPermissions { userID level }
         }
     }
