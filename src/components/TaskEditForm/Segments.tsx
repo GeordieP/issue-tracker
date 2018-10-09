@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HTMLAttributes, FormEventHandler } from 'react';
 import * as classnames from 'classnames';
+import { Save as SaveIcon } from 'react-feather';
 
 interface Props extends HTMLAttributes<HTMLFormElement> {
     task: Task;
@@ -49,7 +50,7 @@ export default ({ task, onSubmit, className, children }: Props) => {
             type="submit"
             className="Button Button--save circle"
             data-testid='editTask_submit'>
-            S
+            <SaveIcon />
         </button>
     );
 

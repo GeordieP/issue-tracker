@@ -7,6 +7,7 @@ import { getTasksForIssue } from 'src/util/graphql/queries';
 import { submitFormMutation } from 'src/util/formSubmission';
 import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
+import { Trash2 as TrashIcon, X as XIcon, Edit as EditIcon } from 'react-feather';
 
 // components
 import TaskDetails from 'src/components/Task/Segments';
@@ -65,11 +66,11 @@ export default class MutableTask extends React.Component<Props, State> {
                             <section className='u-flexH u-centerCrossAxis u-fullWidth'>
                                 <div className='u-flexH'>
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                        <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                        <button onClick={onDelete} className="Button Button--danger circle"><TrashIcon /></button>
                                     </PermittedRender>
 
                                     <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
-                                        <button onClick={this.edit} className="Button Button--edit circle">/</button>
+                                        <button onClick={this.edit} className="Button Button--edit circle"><EditIcon /></button>
                                     </PermittedRender>
                                 </div>
 
@@ -96,9 +97,9 @@ export default class MutableTask extends React.Component<Props, State> {
                                 <div className='u-flexH u-centerCrossAxis'>
                                     <div className='u-flexH'>
                                         <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                            <button onClick={onDelete} className="Button Button--danger circle">X</button>
+                                            <button onClick={onDelete} className="Button Button--danger circle"><TrashIcon /></button>
                                         </PermittedRender>
-                                        <button onClick={this.details} className="Button circle">C</button>
+                                        <button onClick={this.details} className="Button circle"><XIcon /></button>
                                         <SubmitBtn />
                                     </div>
                                     <TitleField />
