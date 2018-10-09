@@ -34,7 +34,7 @@ export default class MutableIssue extends React.Component<Props, State> {
                 mutation={updateIssue}
                 variables={{
                     id: this.props.issue.id,
-                    status: 'Closed'
+                    status: 'closed'
                 }}
                 refetchQueries={[{
                     query: getIssuesForProject,
