@@ -14,22 +14,20 @@ interface Props {
 export default ({ issue, onSubmit, className }: Props) => (
     <IssueEditSegments issue={issue} onSubmit={onSubmit} className={className}>
         {({ TitleField, BodyField, SeverityField, TypeField, StatusField, SubmitBtn }: any) => (
-            <React.Fragment>
-                <section className='u-flexV u-fullWidth'>
-                    <section className='u-flexH u-centerCrossAxis u-fullWidth'>
-                        <SubmitBtn />
-                        <TitleField />
-                    </section>
-
-                    <BodyField />
-
-                    <section className='u-flexH u-spaceBetween'>
-                        <SeverityField />
-                        <TypeField />
-                        <StatusField />
-                    </section>
+            <section className='u-flexV u-fullWidth'>
+                <section className='u-flexH u-centerCrossAxis u-fullWidth'>
+                    <SubmitBtn />
+                    <TitleField />
                 </section>
-            </React.Fragment>
+
+                <BodyField />
+
+                <section className='u-flexH u-spaceBetween'>
+                    <SeverityField />
+                    <TypeField />
+                    <StatusField />
+                </section>
+            </section>
         )}
     </IssueEditSegments>
 );

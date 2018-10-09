@@ -59,43 +59,41 @@ export default class MutableTask extends React.Component<Props, State> {
         const { task } = this.props;
 
         return (
-            <React.Fragment>
-                <TaskDetails task={task}>
-                    {({ Title, Body, Status }: any) => (
-                        <div>
-                            <section className='u-flexH u-centerCrossAxis u-fullWidth'>
-                                <div className='u-flexH'>
-                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                        <button
-                                        onClick={onDelete}
-                                        className="SmallButton SmallButton--danger"
-                                        title='Delete Task'
-                                        data-testid='deleteTask'
-                                        >
-                                            <TrashIcon />
-                                        </button>
-                                    </PermittedRender>
+            <TaskDetails task={task}>
+                {({ Title, Body, Status }: any) => (
+                    <div>
+                        <section className='u-flexH u-centerCrossAxis u-fullWidth'>
+                            <div className='u-flexH'>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
+                                    <button
+                                    onClick={onDelete}
+                                    className="SmallButton SmallButton--danger"
+                                    title='Delete Task'
+                                    data-testid='deleteTask'
+                                    >
+                                        <TrashIcon />
+                                    </button>
+                                </PermittedRender>
 
-                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
-                                        <button
-                                            onClick={this.edit}
-                                            className="Button Button--edit circle"
-                                            title='Edit Task'
-                                            data-testid='editTask'
-                                        >
-                                            <EditIcon />
-                                        </button>
-                                    </PermittedRender>
-                                </div>
+                                <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
+                                    <button
+                                        onClick={this.edit}
+                                        className="Button Button--edit circle"
+                                        title='Edit Task'
+                                        data-testid='editTask'
+                                    >
+                                        <EditIcon />
+                                    </button>
+                                </PermittedRender>
+                            </div>
 
-                                <Title />
-                            </section>
-                            <Status />
-                            <Body />
-                        </div>
-                    )}
-                </TaskDetails>
-            </React.Fragment>
+                            <Title />
+                        </section>
+                        <Status />
+                        <Body />
+                    </div>
+                )}
+            </TaskDetails>
         );
     }
 
@@ -103,43 +101,41 @@ export default class MutableTask extends React.Component<Props, State> {
         const { task } = this.props;
 
         return (
-            <React.Fragment>
-                <TaskEditForm task={task} onSubmit={submitFormMutation(onUpdate)}>
-                    {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
-                        <React.Fragment>
-                            <section className='u-flexV u-fullWidth'>
-                                <div className='u-flexH u-centerCrossAxis'>
-                                    <div className='u-flexH'>
-                                        <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                            <button
-                                                onClick={onDelete}
-                                                className="SmallButton SmallButton--danger"
-                                                title='Delete Task'
-                                                data-testid='deleteTask'
-                                            >
-                                                <TrashIcon />
-                                            </button>
-                                        </PermittedRender>
+            <TaskEditForm task={task} onSubmit={submitFormMutation(onUpdate)}>
+                {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
+                    <React.Fragment>
+                        <section className='u-flexV u-fullWidth'>
+                            <div className='u-flexH u-centerCrossAxis'>
+                                <div className='u-flexH'>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
                                         <button
-                                            onClick={this.details}
-                                            className="Button circle"
-                                            title='Cancel Edit'
-                                            data-testid='cancelEdit'
+                                            onClick={onDelete}
+                                            className="SmallButton SmallButton--danger"
+                                            title='Delete Task'
+                                            data-testid='deleteTask'
                                         >
-                                            <XIcon />
+                                            <TrashIcon />
                                         </button>
-                                        <SubmitBtn />
-                                    </div>
-                                    <TitleField />
+                                    </PermittedRender>
+                                    <button
+                                        onClick={this.details}
+                                        className="Button circle"
+                                        title='Cancel Edit'
+                                        data-testid='cancelEdit'
+                                    >
+                                        <XIcon />
+                                    </button>
+                                    <SubmitBtn />
                                 </div>
+                                <TitleField />
+                            </div>
 
-                                <StatusField />
-                                <BodyField />
-                            </section>
-                        </React.Fragment>
-                    )}
-                </TaskEditForm>
-            </React.Fragment>
+                            <StatusField />
+                            <BodyField />
+                        </section>
+                    </React.Fragment>
+                )}
+            </TaskEditForm>
         );
     }
 }

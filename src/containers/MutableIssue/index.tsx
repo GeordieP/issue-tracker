@@ -74,54 +74,52 @@ export default class MutableIssue extends React.Component<Props, State> {
         const { issue } = this.props;
 
         return (
-            <React.Fragment>
-                <IssueSegments issue={issue}>
-                    {({ Title, Body, Details }: { Title: any, Body: any, Details: any }) => (
-                        <React.Fragment>
-                            <div className='u-flexH u-centerCrossAxis'>
+            <IssueSegments issue={issue}>
+                {({ Title, Body, Details }: { Title: any, Body: any, Details: any }) => (
+                    <React.Fragment>
+                        <div className='u-flexH u-centerCrossAxis'>
 
-                                <div className='u-flexH'>
-                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
+                            <div className='u-flexH'>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
+                                    <button
+                                        onClick={onDelete}
+                                        className="SmallButton SmallButton--danger"
+                                        data-testid='deleteIssue'
+                                        title='Delete Issue'>
+                                        <TrashIcon />
+                                    </button>
+                                </PermittedRender>
+
+                                <PermittedRender requiredLevel={PermissionLevel.Edit} resource={issue}>
+                                    <button
+                                        onClick={this.edit}
+                                        className="Button Button--edit circle"
+                                        data-testid='editIssue'
+                                        title='Edit Issue'>
+                                        <EditIcon />
+                                    </button>
+
+                                    {/* only show close button if the issue isn't closed */}
+                                    { issue.status.toLowerCase() === 'closed' ? '' :
                                         <button
-                                            onClick={onDelete}
-                                            className="SmallButton SmallButton--danger"
-                                            data-testid='deleteIssue'
-                                            title='Delete Issue'>
-                                            <TrashIcon />
+                                            className="Button Button--close circle"
+                                            title='Close Issue'
+                                            data-testid='closeIssue'
+                                            onClick={closeFn}>
+                                            <CheckIcon />
                                         </button>
-                                    </PermittedRender>
-
-                                    <PermittedRender requiredLevel={PermissionLevel.Edit} resource={issue}>
-                                        <button
-                                            onClick={this.edit}
-                                            className="Button Button--edit circle"
-                                            data-testid='editIssue'
-                                            title='Edit Issue'>
-                                            <EditIcon />
-                                        </button>
-
-                                        {/* only show close button if the issue isn't closed */}
-                                        { issue.status.toLowerCase() === 'closed' ? '' :
-                                            <button
-                                                className="Button Button--close circle"
-                                                title='Close Issue'
-                                                data-testid='closeIssue'
-                                                onClick={closeFn}>
-                                                <CheckIcon />
-                                            </button>
-                                        }
-                                    </PermittedRender>
-                                </div>
-
-                                <Title />
+                                    }
+                                </PermittedRender>
                             </div>
 
-                            <Body />
-                            <Details />
-                        </React.Fragment>
-                    )}
-                </IssueSegments>
-            </React.Fragment>
+                            <Title />
+                        </div>
+
+                        <Body />
+                        <Details />
+                    </React.Fragment>
+                )}
+            </IssueSegments>
         );
     }
 
@@ -129,46 +127,44 @@ export default class MutableIssue extends React.Component<Props, State> {
         const { issue } = this.props;
 
         return (
-            <React.Fragment>
-                <IssueEditFormSegments issue={issue} onSubmit={submitFormMutation(onUpdate)}>
-                    {({ TitleField, BodyField, SeverityField, TypeField, StatusField, SubmitBtn }: any) => (
-                        <section className='u-flexV u-fullWidth'>
-                            <section className='u-flexH u-centerCrossAxis u-fullWidth'>
-                                <div className='u-flexH'>
-                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
-                                        <button
-                                            onClick={onDelete}
-                                            className="SmallButton SmallButton--danger circle"
-                                            data-testid='deleteIssue'
-                                            title='Delete Issue'
-                                        >
-                                            <TrashIcon />
-                                        </button>
-                                    </PermittedRender>
+            <IssueEditFormSegments issue={issue} onSubmit={submitFormMutation(onUpdate)}>
+                {({ TitleField, BodyField, SeverityField, TypeField, StatusField, SubmitBtn }: any) => (
+                    <section className='u-flexV u-fullWidth'>
+                        <section className='u-flexH u-centerCrossAxis u-fullWidth'>
+                            <div className='u-flexH'>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
                                     <button
-                                        onClick={this.details}
-                                        className="Button circle"
-                                        data-testid='cancelEdit'
-                                        title='Cancel Edit'
+                                        onClick={onDelete}
+                                        className="SmallButton SmallButton--danger circle"
+                                        data-testid='deleteIssue'
+                                        title='Delete Issue'
                                     >
-                                        <XIcon />
+                                        <TrashIcon />
                                     </button>
-                                    <SubmitBtn />
-                                </div>
-                                <TitleField />
-                            </section>
-
-                            <BodyField />
-
-                            <section className='u-flexH u-spaceBetween'>
-                                <SeverityField />
-                                <TypeField />
-                                <StatusField />
-                            </section>
+                                </PermittedRender>
+                                <button
+                                    onClick={this.details}
+                                    className="Button circle"
+                                    data-testid='cancelEdit'
+                                    title='Cancel Edit'
+                                >
+                                    <XIcon />
+                                </button>
+                                <SubmitBtn />
+                            </div>
+                            <TitleField />
                         </section>
-                    )}
-                </IssueEditFormSegments>
-            </React.Fragment>
+
+                        <BodyField />
+
+                        <section className='u-flexH u-spaceBetween'>
+                            <SeverityField />
+                            <TypeField />
+                            <StatusField />
+                        </section>
+                    </section>
+                )}
+            </IssueEditFormSegments>
         );
     }
 }

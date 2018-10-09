@@ -63,50 +63,48 @@ export default class MutableComment extends React.Component<Props, State> {
         const { comment } = this.props;
 
         return (
-            <React.Fragment>
-                <CommentDetails comment={comment}>
-                    {({ Author, Date, Body }: any) => (
-                        <React.Fragment>
-                            <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
-                                <div className='u-flexH u-centerCrossAxis'>
-                                    <Avatar />
-                                    <Author />
+            <CommentDetails comment={comment}>
+                {({ Author, Date, Body }: any) => (
+                    <React.Fragment>
+                        <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
+                            <div className='u-flexH u-centerCrossAxis'>
+                                <Avatar />
+                                <Author />
 
-                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                        <button
-                                            onClick={onDelete}
-                                            className="SmallButton"
-                                            title='Delete Comment'
-                                            data-testid='deleteComment'
-                                        >
-                                            <TrashIcon />
-                                        </button>
-                                    </PermittedRender>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                    <button
+                                        onClick={onDelete}
+                                        className="SmallButton"
+                                        title='Delete Comment'
+                                        data-testid='deleteComment'
+                                    >
+                                        <TrashIcon />
+                                    </button>
+                                </PermittedRender>
 
-                                    <AuthorRender resource={comment}>
-                                        <button
-                                            onClick={this.edit}
-                                            className="SmallButton"
-                                            title='Edit Comment'
-                                            data-testid='editComment'
-                                        >
-                                            <EditIcon />
-                                        </button>
-                                    </AuthorRender>
-                                </div>
-
-                                <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
-
-                                <div style={{ flexShrink: 0 }}>
-                                    <Date />
-                                </div>
+                                <AuthorRender resource={comment}>
+                                    <button
+                                        onClick={this.edit}
+                                        className="SmallButton"
+                                        title='Edit Comment'
+                                        data-testid='editComment'
+                                    >
+                                        <EditIcon />
+                                    </button>
+                                </AuthorRender>
                             </div>
 
-                            <Body />
-                        </React.Fragment>
-                    )}
-                </CommentDetails>
-            </React.Fragment>
+                            <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
+
+                            <div style={{ flexShrink: 0 }}>
+                                <Date />
+                            </div>
+                        </div>
+
+                        <Body />
+                    </React.Fragment>
+                )}
+            </CommentDetails>
         );
     }
 

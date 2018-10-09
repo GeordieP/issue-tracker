@@ -13,20 +13,18 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 export default ({ task, onSubmit, className, ...props }: Props) => (
     <TaskEditSegments task={task} onSubmit={onSubmit}>
         {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
-            <React.Fragment>
-                <section className='u-flexV'>
-                    <div className='u-flexH u-centerCrossAxis'>
-                        <div>
-                            <SubmitBtn />
-                        </div>
-                        <TitleField />
+            <section className='u-flexV'>
+                <div className='u-flexH u-centerCrossAxis'>
+                    <div>
+                        <SubmitBtn />
                     </div>
+                    <TitleField />
+                </div>
 
-                    <BodyField />
+                <BodyField />
 
-                    <StatusField />
-                </section>
-            </React.Fragment>
+                <StatusField />
+            </section>
         )}
     </TaskEditSegments>
 );
