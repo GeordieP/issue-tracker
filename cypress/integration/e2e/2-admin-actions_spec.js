@@ -38,7 +38,7 @@ describe('Admin create/edit/delete flows', () => {
             // author username
             cy.root().should('contain', 'AdminUser');
             // severity
-            cy.root().should('contain', 'high');
+            cy.root().should('contain', 'High');
             // body text
             cy.root().should('contain', bodyText);
         });
@@ -56,10 +56,24 @@ describe('Admin create/edit/delete flows', () => {
         // verify issue contents
         cy.get('.IssueView-content').within(() => {
             // severity
-            cy.root().should('contain', 'low');
+            cy.root().should('contain', 'Low');
             // body text
             cy.root().should('contain', bodyText);
         });
+    });
+
+    it('Close issue', () => {
+        // issue should start open
+        cy.get('.IssueView-content').contains('Open');
+
+        // click close button
+        cy.get('[data-testid="closeIssue"]').click();
+
+        // verify issue is closed
+        cy.get('.IssueView-content').contains('Closed');
+
+        // verify close button is gone
+        cy.get('[data-testid="closeIssue"]').should('not.exist');
     });
 
     it('Delete issue', () => {

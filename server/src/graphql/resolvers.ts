@@ -354,6 +354,10 @@ export default (db: any) => {
                     throw new Error(`Insufficient Permissions. (required ${ PermissionLevel.Create }, had ${ level })`);
                 }
 
+                if (args.status) {
+                    args.status = args.status.toLowerCase();
+                }
+
                 return new db.Issue({
                     ...args,
                     creator: ctx.state.user.id,

@@ -9,6 +9,8 @@ interface Props extends HTMLAttributes<HTMLElement> {
     children: any;
 }
 
+const capitalize = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
+
 export default ({ issue, children, ...props }: Props) => {
     const renderTitle = () => (
         <h1 className='u-noMargin'>{issue.title}</h1>
@@ -30,8 +32,9 @@ export default ({ issue, children, ...props }: Props) => {
             </section>
 
             <section className='u-alignRight'>
-                <h4>{issue.type} | {issue.severity}</h4>
-                <h4>{issue.status}</h4>
+                {/* capitalize first letter of each field*/}
+                <h4>{capitalize(issue.type)} | {capitalize(issue.severity)}</h4>
+                <h4>{capitalize(issue.status)}</h4>
             </section>
         </section>
     );
