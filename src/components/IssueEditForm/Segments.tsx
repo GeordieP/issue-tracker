@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FormEventHandler } from 'react';
 import * as classnames from 'classnames';
+import { Save as SaveIcon } from 'react-feather';
 
 interface Props {
     issue: Issue;
@@ -84,9 +85,9 @@ export default ({ issue, onSubmit, children, className }: Props) => {
             type="submit"
             className="Button Button--save circle"
             data-testid='editIssue_submit'
-            title='S'
+            title='Save Issue'
         >
-                S
+                <SaveIcon />
             </button>
         </section>
     );

@@ -26,6 +26,8 @@ body {
 
 svg {
     display: block;
+    width: 0.9rem;
+    height: 0.9rem;
 }
 
 hr {
@@ -86,6 +88,10 @@ textarea {
 }
 
 .Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
     background: var(--col-maxContrast);
     margin: 0 var(--spc-xsmall);
     border-radius: var(--rad-max);

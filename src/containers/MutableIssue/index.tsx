@@ -7,6 +7,7 @@ import { getIssuesForProject } from 'src/util/graphql/queries';
 import { submitFormMutation } from 'src/util/formSubmission';
 import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
+import { Trash2 as TrashIcon, X as XIcon, Edit as EditIcon, Check as CheckIcon } from 'react-feather';
 
 // components
 import IssueSegments from 'src/components/Issue/Segments';
@@ -69,9 +70,9 @@ export default class MutableIssue extends React.Component<Props, State> {
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
                                         <button
                                             onClick={onDelete}
-                                            className="Button Button--danger circle"
+                                            className="SmallButton SmallButton--danger"
                                             title='Delete Issue'>
-                                            X
+                                            <TrashIcon />
                                         </button>
                                     </PermittedRender>
 
@@ -80,14 +81,14 @@ export default class MutableIssue extends React.Component<Props, State> {
                                             onClick={this.edit}
                                             className="Button Button--edit circle"
                                             title='Edit Issue'>
-                                            E
+                                            <EditIcon />
                                         </button>
 
                                         {/* TODO: Run a mutation to close issue */}
                                         <button
                                             className="Button Button--close circle"
                                             title='Close Issue'>
-                                            ✔
+                                            <CheckIcon />
                                         </button>
                                     </PermittedRender>
                                 </div>
@@ -117,13 +118,15 @@ export default class MutableIssue extends React.Component<Props, State> {
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={issue}>
                                         <button
                                             onClick={onDelete}
-                                            className="Button Button--danger circle"
+                                            className="SmallButton SmallButton--danger circle"
                                             title='Delete Issue'
                                         >
-                                            X
+                                            <TrashIcon />
                                         </button>
                                     </PermittedRender>
-                                    <button onClick={this.details} className="Button circle" title='Cancel Edit'>C</button>
+                                    <button onClick={this.details} className="Button circle" title='Cancel Edit'>
+                                        <XIcon />
+                                    </button>
                                     <SubmitBtn />
                                 </div>
                                 <TitleField />
