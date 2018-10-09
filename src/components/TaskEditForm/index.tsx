@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { HTMLAttributes, FormEventHandler } from 'react';
-import * as classnames from 'classnames';
+// import * as classnames from 'classnames';
+
+import TaskEditSegments from './Segments';
 
 interface Props extends HTMLAttributes<HTMLFormElement> {
     task: Task;
@@ -9,52 +11,20 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 }
 
 export default ({ task, onSubmit, className, ...props }: Props) => (
-    <form
-        onSubmit={onSubmit}
-        className={classnames('u-flexH', className)}
-        {...props}
-    >
-        <input
-            type="text"
-            name="id"
-            value={task.id}
-            data-testid='editTask_taskID'
-            readOnly={true} hidden={true} disabled={true}
-        />
+    <TaskEditSegments task={task} onSubmit={onSubmit}>
+        {({ TitleField, BodyField, StatusField, SubmitBtn }: any) => (
+            <section className='u-flexV'>
+                <div className='u-flexH u-centerCrossAxis'>
+                    <div>
+                        <SubmitBtn />
+                    </div>
+                    <TitleField />
+                </div>
 
-        <section className="u-flexV">
-            <input
-                type="text"
-                placeholder="Title"
-                data-testid="editTask_title"
-                name="title"
-                defaultValue={task.title}
-            />
-            <textarea
-                name="body"
-                placeholder="Provide some details"
-                data-testid="editTask_body"
-                rows={15}
-                defaultValue={task.body}
-             />
-        </section>
+                <BodyField />
 
-        <section className="u-flexV">
-            <label htmlFor="editTask_openStatus">Open</label>
-            <input
-                type="checkbox"
-                data-testid="editTask_openStatus"
-                name="openStatus"
-                defaultChecked={task.openStatus}
-            />
-
-            <button
-                type="submit"
-                className="Button Button--primary"
-                data-testid='editTask_submit'
-            >
-                Save Task
-            </button>
-        </section>
-    </form>
+                <StatusField />
+            </section>
+        )}
+    </TaskEditSegments>
 );

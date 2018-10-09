@@ -15,3 +15,4 @@ declare module 'koa-session';
 declare module 'koa-redis';
 declare module 'koa-router';
 declare module 'mongoose';
+declare module 'react-feather';

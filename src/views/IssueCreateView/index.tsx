@@ -28,27 +28,23 @@ const onCompletedFn = (match: Match<RouteParams>) => ({ createIssue: { id: newID
 }
 
 const IssueCreateView = ({ match }: Props) => (
-    <React.Fragment>
-        <h1>New Issue</h1>
+    <Mutation
+        mutation={createIssue}
+        refetchQueries={[{ query: getIssuesForProject, variables: { project: match.params.projectID } }]}
+        onCompleted={onCompletedFn(match)}
+    >
+        {(mutFn: any, { loading, error }: any) => {
+            if (loading) return <LoadingSpinner />
+            if (error) return <LoadingError error={error} />
 
-        <Mutation
-            mutation={createIssue}
-            refetchQueries={[{ query: getIssuesForProject, variables: { project: match.params.projectID } }]}
-            onCompleted={onCompletedFn(match)}
-        >
-            {(mutFn: any, { loading, error }: any) => {
-                if (loading) return <LoadingSpinner />
-                if (error) return <LoadingError error={error} />
-
-                return (
-                    <IssueCreateForm
-                        projectID={match.params.projectID}
-                        onSubmit={submitFormMutation(mutFn)}
-                    />
-                )
-            }}
-        </Mutation>
-    </React.Fragment>
+            return (
+                <IssueCreateForm
+                    projectID={match.params.projectID}
+                    onSubmit={submitFormMutation(mutFn)}
+                />
+            )
+        }}
+    </Mutation>
 );
 
 // ensure user has permission to view page
@@ -70,6 +66,7 @@ export default ({ match }: Props) => (
 
                     {/* if we're permitted, render the create view. */}
                     <PermittedRender resource={data.project} requiredLevel={PermissionLevel.Create}>
+                        <h1>New Issue</h1>
                         <IssueCreateView match={match} />
                     </PermittedRender>
                 </React.Fragment>

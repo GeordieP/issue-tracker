@@ -1,32 +1,37 @@
 import * as React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-import { commentMock, extraPropsMock } from 'testUtil/mocks';
+import { commentMock } from 'testUtil/mocks';
 
 // components
-import CommentEditForm from './';
+import CommentEditSegments from './Segments';
 
-const spy = jest.fn();
+describe('Comment edit form segments', () => {
+    const spy = jest.fn();
 
-const { getByText, getByTestId, container: { firstChild } } = render(
-    <CommentEditForm comment={commentMock} onSubmit={spy} {...extraPropsMock} />
-);
+    const { getByText, getByTestId } = render(
+        <CommentEditSegments comment={commentMock} onSubmit={spy}>
+            {({ Author, BodyField, SubmitBtn }: any) => (
+                <React.Fragment>
+                    <Author />
+                    <BodyField />
+                    <SubmitBtn />
+                </React.Fragment>
+            )}
+        </CommentEditSegments>
+    );
 
-test('comment ID field is readonly, disabled, and hidden', () => {
-    const commentIDField = getByTestId('editComment_commentID');
-
-    ['readonly', 'hidden', 'disabled'].forEach(attr => {
-        expect(commentIDField).toHaveAttribute(attr);
+    test('All fields are rendered', () => {
+        expect(getByText(commentMock.creator.username)).toBeVisible();
+        expect(getByTestId('editComment_body')).toBeVisible();
+        expect(getByTestId('editComment_submit')).toBeVisible();
     });
-});
 
-test('clicking submit calls onSubmit prop', () => {
-    expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.submit(getByText('Save Comment'));
-    expect(spy).toHaveBeenCalledTimes(1);
-});
+    test('comment ID field is readonly, disabled, and hidden', () => {
+        const commentIDField = getByTestId('editComment_commentID');
 
-test('renders with additional props', () => {
-    expect(firstChild).toHaveAttribute('title', extraPropsMock.title);
-    expect(firstChild).toHaveClass(extraPropsMock.className);
+        ['readonly', 'hidden', 'disabled'].forEach(attr => {
+            expect(commentIDField).toHaveAttribute(attr);
+        });
+    });
 });

@@ -63,12 +63,14 @@ const IssueView = ({
                 <hr />
                 <section className='u-marginBottomMed u-marginTopMed'>
                     <PermittedRender requiredLevel={PermissionLevel.Create} resource={issue}>
-                        <h3>New Comment</h3>
-                        <CommentCreate
-                            parentID={match.params.issueID}
-                            parentType={CommentParentType.ISSUE}
-                            className='u-flexV u-fullWidth u-alignRight'
-                        />
+                        <div className='u-marginBottomLarge'>
+                            <h3>New Comment</h3>
+                            <CommentCreate
+                                parentID={match.params.issueID}
+                                parentType={CommentParentType.ISSUE}
+                                className='u-flexV u-fullWidth u-alignRight'
+                            />
+                        </div>
                     </PermittedRender>
 
                     <Query query={getComments} variables={{ parent: match.params.issueID }}>
@@ -90,13 +92,15 @@ const IssueView = ({
 
             <div className="IssueView-sidebar">
                 <h2>Tasks</h2>
-                <hr />
-                <section className='u-marginBottomMed u-marginTopMed'>
+
+                <section className='u-marginBottomLarge u-marginTopMed'>
                     <PermittedRender requiredLevel={PermissionLevel.Create} resource={issue}>
                         <h3>New Task</h3>
                         <TaskCreate parentID={match.params.issueID} />
                     </PermittedRender>
+                </section>
 
+                <section>
                     <Query query={getTasksForIssue} variables={{ parent: match.params.issueID }}>
                         {({ loading, error, data }: QueryResult) => {
                             if (loading) return <LoadingSpinner message='Loading tasks...' />

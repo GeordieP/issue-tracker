@@ -57,11 +57,14 @@ const TaskView = ({
 
             <h2>Comments</h2>
             <hr />
-            <section className='u-marginBottomMed u-marginTopMed'>
-                <PermittedRender requiredLevel={PermissionLevel.Create} resource={task}>
-                    <h3>New Comment</h3>
-                    <CommentCreate parentID={match.params.taskID} parentType={CommentParentType.TASK} />
-                </PermittedRender>
+
+            <section className='u-marginTopMed'>
+                <div className='u-marginBottomLarge'>
+                    <PermittedRender requiredLevel={PermissionLevel.Create} resource={task}>
+                        <h3>New Comment</h3>
+                        <CommentCreate parentID={match.params.taskID} parentType={CommentParentType.TASK} />
+                    </PermittedRender>
+                </div>
 
                 <Query query={getComments} variables={{ parent: match.params.taskID }}>
                     {({ loading, error, data }: QueryResult) => {

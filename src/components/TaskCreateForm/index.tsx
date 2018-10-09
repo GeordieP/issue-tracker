@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<HTMLFormElement> {
 
 export default ({ parentID, onSubmit, ...props }: Props) => (
     <form className="u-flexH" onSubmit={onSubmit} {...props}>
-        <section className="u-flexV">
+        <section className="u-flexV u-fullWidth">
             <input
                 type="text"
                 name="parent"
@@ -30,7 +30,7 @@ export default ({ parentID, onSubmit, ...props }: Props) => (
                 data-testid='createTask_body'
             />
 
-            <section className='u-flexH u-spaceBetween'>
+            <section className='u-flexH u-spaceBetween u-centerCrossAxis'>
                 <div>
                     <label htmlFor="createTask_openStatus">Open </label>
                     <input

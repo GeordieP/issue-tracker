@@ -1,0 +1,7 @@
+.TaskListItem {
+    background: var(--col-maxContrast);
+    padding: var(--spc-small);
+    border-radius: var(--rad-small);
+    margin: var(--spc-small) 0;
+    box-shadow: 0 2px 4px rgba(var(--rgb-primary), 0.06);
+}

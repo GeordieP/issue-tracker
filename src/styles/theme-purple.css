@@ -7,7 +7,8 @@
     --spc-xlarge: 40px;
 
     /* for radii */
-    --rad-small: 6px;
+    --rad-small: 7px;
+    --rad-max: 100px;
 }
 
 /*
@@ -15,7 +16,11 @@
 
     Accent color info page http://www.color-hex.com/color/2d5791
 
-    CH in comments refers to the color-hex page linked above.
+    Accent color 1 https://www.colorhexa.com/817fff
+    Accent color 2 https://www.colorhexa.com/6987FF
+
+    CH in comments refers to the colorhexa page linked above.
+
     '--col-' properties are the colors themselves, ready to use;
     '--rgb-' properties are the individual channels of a color, so users of
         the color can apply an alpha channel themselves. Eg:
@@ -23,17 +28,32 @@
 */
 
 /* Content Colors - for text, icons, accents, borders, etc */
-$primary: 9, 17, 29;                                          /* CH 9th shade */
-$primaryHighContrast: 213, 221, 233;                           /* CH 9th tint */
-$accent: 45, 87, 145;                                            /* base color*/
-$bgPrimary: 250, 253, 255;                       /* 7th tint page > 10th tint */
+$maxContrast: 255, 255, 255;
+$minContrast: 0, 0, 0;
+$primary: 1, 0, 68;
+$primaryHighContrast: 206,205,255;
+$accent: 129, 127, 255;
+$altAccent: 105, 135, 255;
+$bgPrimary: 250, 253, 255;
+$bgSecondary: 246, 248, 250;
+$bgTertiary: 243, 245, 248;
 /* Background Colors */
-$bgAccentHighContrast: 22, 43, 71;                            /* CH 6th shade */
-$bgAccentLowContrast: 234, 238, 244;                          /* CH 10th tint */
+$bgAccentHighContrast: 22, 43, 71;
+$bgAccentLowContrast: 234, 238, 244;
+
+$miscBlue: 85, 204, 255;
+$miscRed: 238, 68, 68;
+$miscGreen:	102, 187, 102;
 
 :root {
     --rgb-primary: $primary;
     --col-primary: rgb(var(--rgb-primary));
+
+    --rgb-maxContrast: $maxContrast;
+    --col-maxContrast: rgb(var(--rgb-maxContrast));
+
+    --rgb-minContrast: $minContrast;
+    --col-minContrast: rgb(var(--rgb-minContrast));
 
     --rgb-primaryHighContrast: $primaryHighContrast;
     --col-primaryHighContrast: rgb(var(--rgb-primaryHighContrast));
@@ -41,9 +61,27 @@ $bgAccentLowContrast: 234, 238, 244;                          /* CH 10th tint */
     --rgb-accent: $accent;
     --col-accent: rgb(var(--rgb-accent));
 
+    --rgb-altAccent: $altAccent;
+    --col-altAccent: rgb(var(--rgb-altAccent));
+
+    --rgb-miscBlue: $miscBlue;
+    --col-miscBlue: rgb(var(--rgb-miscBlue));
+
+    --rgb-miscRed: $miscRed;
+    --col-miscRed: rgb(var(--rgb-miscRed));
+
+    --rgb-miscGreen: $miscGreen;
+    --col-miscGreen: rgb(var(--rgb-miscGreen));
+
+
     --rgb-bgPrimary: $bgPrimary;
     --col-bgPrimary: rgb(var(--rgb-bgPrimary));
 
+    --rgb-bgSecondary: $bgSecondary;
+    --col-bgSecondary: rgb(var(--rgb-bgSecondary));
+
+    --rgb-bgTertiary: $bgTertiary;
+    --col-bgTertiary: rgb(var(--rgb-bgTertiary));
 
     --rgb-bgAccentHighContrast: $bgAccentHighContrast;
     --col-bgAccentHighContrast: rgb(var(--rgb-bgAccentHighContrast));

@@ -36,7 +36,7 @@ export default ({ project, onSubmit, ...props }: Props) => (
         </section>
 
         <section>
-            <button type="submit" className="Button Button--primary">Save</button>
+            <button type="submit" className="Button Button--save">Save</button>
         </section>
     </form>
 );

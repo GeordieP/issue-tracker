@@ -27,21 +27,17 @@ const onCompletedFn = (match: Match<RouteParams>) => ({ createProject: { id: new
 }
 
 const ProjectCreateView = ({ match }: Props) => (
-    <React.Fragment>
-        <h1>New Project</h1>
-
-        <Mutation
-            mutation={createProject}
-            refetchQueries={[{ query: getProjects }]}
-            onCompleted={onCompletedFn(match)}
-        >
-            {(mutFn: any, { loading, error, refetch }: any) => {
-                if (loading) return <LoadingSpinner />
-                if (error) return <LoadingError error={error} />
-                return <ProjectCreateForm onSubmit={submitFormMutation(mutFn)} />
-            }}
-        </Mutation>
-    </React.Fragment>
+    <Mutation
+        mutation={createProject}
+        refetchQueries={[{ query: getProjects }]}
+        onCompleted={onCompletedFn(match)}
+    >
+        {(mutFn: any, { loading, error, refetch }: any) => {
+            if (loading) return <LoadingSpinner />
+            if (error) return <LoadingError error={error} />
+            return <ProjectCreateForm onSubmit={submitFormMutation(mutFn)} />
+        }}
+    </Mutation>
 );
 
 // ensure the user has permission to view the page
@@ -54,6 +50,7 @@ export default (props: Props) => (
 
         {/* if we're permitted, render the create view. */}
         <SitePermittedRender requiredLevel={PermissionLevel.Create}>
+            <h1>New Project</h1>
             <ProjectCreateView {...props} />
         </SitePermittedRender>
     </React.Fragment>

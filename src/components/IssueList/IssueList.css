@@ -8,6 +8,6 @@
 
 .IssueList-item--clickable {
     &.is-selected, &:hover {
-        background: rgba(var(--rgb-bgAccentLowContrast), 0.4);
+        background: var(--col-bgSecondary);
     }
 }

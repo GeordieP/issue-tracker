@@ -5,6 +5,12 @@ import { Query, QueryResult, ApolloConsumer } from 'react-apollo';
 import { authStatus } from 'src/util/graphql/clientQueries';
 import history from 'src/util/history';
 import * as classnames from 'classnames';
+import {
+    Home as HomeIcon,
+    LogOut as LogoutIcon,
+    LogIn as LoginIcon,
+    UserPlus as SignupIcon,
+} from 'react-feather';
 
 import NavRoutes from './NavRoutes';
 
@@ -24,7 +30,11 @@ class NavBar extends React.Component<Props, {}> {
         return (
             <nav className={classnames('NavBar u-fullWidth u-fullHeight', this.props.className)}>
                 <ul className="u-flexH NavBar-itemList">
-                    <Link to='/projects' title='Home'><li>🏠</li></Link>
+                    <Link to='/projects' title='Home'>
+                        <li className='u-flexV u-centerBoth circle'>
+                            <HomeIcon />
+                        </li>
+                    </Link>
                 </ul>
 
                 <ul className="u-flexH NavBar-itemList">
@@ -46,15 +56,22 @@ class NavBar extends React.Component<Props, {}> {
     }
 
     private renderLoggedInButtons = (username: string) => (
-        <React.Fragment>
-            <LogoutBtn username={username} />
-        </React.Fragment>
+        <LogoutBtn username={username} />
     );
 
     private renderLoggedOutButtons = () => (
         <React.Fragment>
-            <Link to='/signup' title='Sign Up'><li>Sign Up</li></Link>
-            <Link to='/login' title='Log In'><li>Log In</li></Link>
+            <Link id='login' to='/login' title='Log In'>
+                <li className='u-flexV u-centerBoth circle'>
+                    <LoginIcon />
+                </li>
+            </Link>
+
+            <Link id='signup' to='/signup' title='Sign Up'>
+                <li className='u-flexV u-centerBoth circle'>
+                    <SignupIcon />
+                </li>
+            </Link>
         </React.Fragment>
     );
 }
@@ -74,7 +91,9 @@ const LogoutBtn = ({ username, children }: any) => (
     <ApolloConsumer>
         { (client: any) => (
             <Link to='/' onClick={logoutRequest.bind(null, client)}>
-                <li title={`Logged in as ${username}`}>Log Out</li>
+                <li id='logout' className='u-flexV u-centerBoth circle' title={`Logged in as ${username}`}>
+                    <LogoutIcon />
+                </li>
             </Link>
         )}
     </ApolloConsumer>

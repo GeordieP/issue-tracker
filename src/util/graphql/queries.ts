@@ -92,6 +92,7 @@ export const getComments = gql(`
             creator { id username }
             body
             userPermissions { userID level }
+            dateUpdated
         }
     }
 `);
@@ -104,6 +105,7 @@ export const getTasksForIssue = gql(`
             title
             body
             openStatus
+            dateUpdated
         }
     }
 `);
@@ -116,6 +118,7 @@ export const getTask = gql(`
             creator { id username }
             openStatus
             body
+            dateUpdated
             userPermissions { userID level }
         }
     }

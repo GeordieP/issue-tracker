@@ -6,10 +6,11 @@ import { submitFormMutation } from 'src/util/formSubmission';
 import AuthorRender from 'src/containers/Permissions/AuthorRender';
 import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
+import { Trash2 as TrashIcon, Edit as EditIcon, X as XIcon, User as UserIcon } from 'react-feather';
 
 // components
-import CommentEditForm from 'src/components/CommentEditForm';
-import CommentDetails from 'src/components/Comment';
+import CommentEditForm from 'src/components/CommentEditForm/Segments';
+import CommentDetails from 'src/components/Comment/Segments';
 
 interface Props {
     parentID: ID;
@@ -19,6 +20,12 @@ interface Props {
 interface State {
     edit: boolean;
 }
+
+const Avatar = () => (
+    <div className='Avatar'>
+        <UserIcon />
+    </div>
+);
 
 export default class MutableComment extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -56,19 +63,48 @@ export default class MutableComment extends React.Component<Props, State> {
         const { comment } = this.props;
 
         return (
-            <React.Fragment >
-                <CommentDetails comment={comment} className='MutableComment-commentDetails' />
+            <CommentDetails comment={comment}>
+                {({ Author, Date, Body }: any) => (
+                    <React.Fragment>
+                        <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
+                            <div className='u-flexH u-centerCrossAxis'>
+                                <Avatar />
+                                <Author />
 
-                <div className='u-alignRight'>
-                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                        <button onClick={onDelete} className="Button Button--danger">Delete Comment</button>
-                    </PermittedRender>
+                                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                    <button
+                                        onClick={onDelete}
+                                        className="SmallButton"
+                                        title='Delete Comment'
+                                        data-testid='deleteComment'
+                                    >
+                                        <TrashIcon />
+                                    </button>
+                                </PermittedRender>
 
-                    <AuthorRender resource={comment}>
-                        <button onClick={this.edit} className="Button">Edit Comment</button>
-                    </AuthorRender>
-                </div>
-            </React.Fragment>
+                                <AuthorRender resource={comment}>
+                                    <button
+                                        onClick={this.edit}
+                                        className="SmallButton"
+                                        title='Edit Comment'
+                                        data-testid='editComment'
+                                    >
+                                        <EditIcon />
+                                    </button>
+                                </AuthorRender>
+                            </div>
+
+                            <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
+
+                            <div style={{ flexShrink: 0 }}>
+                                <Date />
+                            </div>
+                        </div>
+
+                        <Body />
+                    </React.Fragment>
+                )}
+            </CommentDetails>
         );
     }
 
@@ -76,14 +112,47 @@ export default class MutableComment extends React.Component<Props, State> {
         const { comment } = this.props;
 
         return (
-            <div className='u-alignRight' style={{ background: 'var(--col-mono2)' }}>
-                <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)} />
+            <div>
+                <CommentEditForm comment={comment} onSubmit={submitFormMutation(onUpdate)}>
+                    {({ Author, Date, BodyField, SubmitBtn }: any) => (
+                        <React.Fragment>
+                            <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
+                                <div className='u-flexH u-centerCrossAxis'>
+                                    <Avatar />
+                                    <Author />
 
-                <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                    <button onClick={onDelete} className="Button Button--danger">Delete Comment</button>
-                </PermittedRender>
+                                    <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
+                                        <button
+                                            onClick={onDelete}
+                                            className="SmallButton SmallButton--danger"
+                                            title='Delete Comment'
+                                            data-testid='deleteComment'
+                                        >
+                                            <TrashIcon />
+                                        </button>
+                                    </PermittedRender>
 
-                <button onClick={this.details} className="Button">Cancel</button>
+                                    <button
+                                        onClick={this.details}
+                                        className="SmallButton"
+                                        title='Cancel Edit'
+                                        data-testid='cancelEdit'
+                                    >
+                                        <XIcon />
+                                    </button>
+                                    <SubmitBtn />
+                                </div>
+
+                                <hr style={{ margin: '0 20px', background: '#e8e8e8'}}/>
+
+                                <div style={{ flexShrink: 0 }}>
+                                    <Date />
+                                </div>
+                            </div>
+                            <BodyField />
+                        </React.Fragment>
+                    )}
+                </CommentEditForm>
             </div>
         );
     }
