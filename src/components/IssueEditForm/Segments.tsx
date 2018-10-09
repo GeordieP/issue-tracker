@@ -33,7 +33,7 @@ export default ({ issue, onSubmit, children, className }: Props) => {
     );
 
     const renderSeverity = () => (
-        <div>
+        <div className='u-flexV'>
             <label htmlFor='severity'>Severity</label>
             <select
                 id='severity'
@@ -49,7 +49,7 @@ export default ({ issue, onSubmit, children, className }: Props) => {
     );
 
     const renderType = () => (
-        <div>
+        <div className='u-flexV'>
             <label htmlFor='type'>Type</label>
             <select
                 id='type'
@@ -65,7 +65,7 @@ export default ({ issue, onSubmit, children, className }: Props) => {
     );
 
     const renderStatus = () => (
-        <div>
+        <div className='u-flexV'>
             <label htmlFor='status'>Status</label>
             <select
                 id='status'

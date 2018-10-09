@@ -63,12 +63,14 @@ const IssueView = ({
                 <hr />
                 <section className='u-marginBottomMed u-marginTopMed'>
                     <PermittedRender requiredLevel={PermissionLevel.Create} resource={issue}>
-                        <h3>New Comment</h3>
-                        <CommentCreate
-                            parentID={match.params.issueID}
-                            parentType={CommentParentType.ISSUE}
-                            className='u-flexV u-fullWidth u-alignRight'
-                        />
+                        <div className='u-marginBottomLarge'>
+                            <h3>New Comment</h3>
+                            <CommentCreate
+                                parentID={match.params.issueID}
+                                parentType={CommentParentType.ISSUE}
+                                className='u-flexV u-fullWidth u-alignRight'
+                            />
+                        </div>
                     </PermittedRender>
 
                     <Query query={getComments} variables={{ parent: match.params.issueID }}>
