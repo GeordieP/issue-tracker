@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HTMLAttributes } from 'react';
 import { Link } from 'react-router-dom';
+import { CheckCircle as CheckIcon } from 'react-feather';
 
 import './TaskListItem.css';
 
@@ -25,14 +26,25 @@ export default ({ task, linkBaseUrl }: Props) => {
         </Link>
         : task.title
 
+    const renderTitleOpen = () => (
+        <h3 className='u-flexH u-centerCrossAxis' style={{ color: 'var(--clr-primary)'}}>
+            { renderTitle() }
+        </h3>
+    );
+
+    const renderTitleClosed = () => (
+        <h3 className='u-flexH u-centerCrossAxis u-strikethrough' style={{ color: 'rgb(var(--rgb-primary), 0.4'}}>
+            <CheckIcon className='u-marginHXSmall' />
+            { renderTitle() }
+        </h3>
+    );
+
     return (
         <div className='TaskListItem u-flexV'>
-                <h3
-                    className={ task.openStatus ? '' : 'u-strikethrough'}
-                    style={{ color: 'var(--clr-primary)'}}
-                >
-                    { renderTitle() }
-                </h3>
+                { task.openStatus
+                    ? renderTitleOpen()
+                    : renderTitleClosed()
+                }
 
                 <div
                     className='u-flexH u-fullWidth u-spaceBetween'

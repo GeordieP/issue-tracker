@@ -78,7 +78,24 @@
 .u-marginTopMed { margin-top: var(--spc-med); }
 .u-marginTopSmall { margin-top: var(--spc-small); }
 
+/* margin of various sizes for left and right */
+.u-marginHXSmall {
+    margin-left: var(--spc-xsmall);
+    margin-right: var(--spc-xsmall); }
+.u-marginHSmall {
+    margin-left: var(--spc-small);
+    margin-right: var(--spc-small); }
+.u-marginHMed {
+    margin-left: var(--spc-med);
+    margin-right: var(--spc-med); }
+.u-marginHLarge {
+    margin-left: var(--spc-large);
+    margin-right: var(--spc-large); }
+
 /* padding of different sizes for top and bottom */
+.u-paddingVXSmall {
+    padding-top: var(--spc-xsmall);
+    padding-bottom: var(--spc-xsmall); }
 .u-paddingVSmall {
     padding-top: var(--spc-small);
     padding-bottom: var(--spc-small); }
@@ -90,6 +107,9 @@
     padding-bottom: var(--spc-large); }
 
 /* padding of various sizes for left and right */
+.u-paddingHXSmall {
+    padding-left: var(--spc-xsmall);
+    padding-right: var(--spc-xsmall); }
 .u-paddingHSmall {
     padding-left: var(--spc-small);
     padding-right: var(--spc-small); }
