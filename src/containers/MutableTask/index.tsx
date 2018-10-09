@@ -66,7 +66,7 @@ export default class MutableTask extends React.Component<Props, State> {
                             <section className='u-flexH u-centerCrossAxis u-fullWidth'>
                                 <div className='u-flexH'>
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                        <button onClick={onDelete} className="Button Button--danger circle"><TrashIcon /></button>
+                                        <button onClick={onDelete} className="SmallButton SmallButton--danger"><TrashIcon /></button>
                                     </PermittedRender>
 
                                     <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
@@ -97,7 +97,7 @@ export default class MutableTask extends React.Component<Props, State> {
                                 <div className='u-flexH u-centerCrossAxis'>
                                     <div className='u-flexH'>
                                         <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                            <button onClick={onDelete} className="Button Button--danger circle"><TrashIcon /></button>
+                                            <button onClick={onDelete} className="SmallButton SmallButton--danger"><TrashIcon /></button>
                                         </PermittedRender>
                                         <button onClick={this.details} className="Button circle"><XIcon /></button>
                                         <SubmitBtn />
