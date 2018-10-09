@@ -204,3 +204,17 @@ textarea {
     width: 100%;
     height: 100%;
 }
+
+.Avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--col-maxContrast);
+    border-radius: var(--rad-max);
+    box-shadow: 0 2px 4px rgba(var(--rgb-primary), 0.06);
+    color: rgba(var(--rgb-primary), 0.3);
+    margin: var(--spc-xsmall);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}

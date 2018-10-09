@@ -6,7 +6,7 @@ import { submitFormMutation } from 'src/util/formSubmission';
 import AuthorRender from 'src/containers/Permissions/AuthorRender';
 import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
-import { Trash2 as TrashIcon, Edit as EditIcon, X as XIcon } from 'react-feather';
+import { Trash2 as TrashIcon, Edit as EditIcon, X as XIcon, User as UserIcon } from 'react-feather';
 
 // components
 import CommentEditForm from 'src/components/CommentEditForm/Segments';
@@ -20,6 +20,12 @@ interface Props {
 interface State {
     edit: boolean;
 }
+
+const Avatar = () => (
+    <div className='Avatar'>
+        <UserIcon />
+    </div>
+);
 
 export default class MutableComment extends React.Component<Props, State> {
     constructor(props: Props) {
@@ -62,7 +68,8 @@ export default class MutableComment extends React.Component<Props, State> {
                     {({ Author, Date, Body }: any) => (
                         <React.Fragment>
                             <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
-                                <div className='u-flexH'>
+                                <div className='u-flexH u-centerCrossAxis'>
+                                    <Avatar />
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
@@ -98,7 +105,8 @@ export default class MutableComment extends React.Component<Props, State> {
                     {({ Author, Date, BodyField, SubmitBtn }: any) => (
                         <React.Fragment>
                             <div className='u-flexH u-centerCrossAxis u-spaceBetween'>
-                                <div className='u-flexH'>
+                                <div className='u-flexH u-centerCrossAxis'>
+                                    <Avatar />
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
