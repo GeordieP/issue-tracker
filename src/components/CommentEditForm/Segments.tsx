@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HTMLAttributes, FormEventHandler } from 'react';
 import * as classnames from 'classnames';
+import { Save as SaveIcon } from 'react-feather';
 
 import './CommentEditForm.css';
 
@@ -33,7 +34,7 @@ export default ({ comment, onSubmit, className, children }: Props) => {
             type="submit"
             className="SmallButton SmallButton--save"
             data-testid='editComment_submit'>
-            S
+            <SaveIcon />
         </button>
     );
 

@@ -6,6 +6,7 @@ import { submitFormMutation } from 'src/util/formSubmission';
 import AuthorRender from 'src/containers/Permissions/AuthorRender';
 import PermittedRender from 'src/containers/Permissions/PermittedRender';
 import { PermissionLevel } from 'src/types/Permissions';
+import { Trash2 as TrashIcon, Edit as EditIcon, X as XIcon } from 'react-feather';
 
 // components
 import CommentEditForm from 'src/components/CommentEditForm/Segments';
@@ -65,11 +66,11 @@ export default class MutableComment extends React.Component<Props, State> {
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                        <button onClick={onDelete} className="SmallButton" title='Delete Comment'>X</button>
+                                        <button onClick={onDelete} className="SmallButton" title='Delete Comment'><TrashIcon /></button>
                                     </PermittedRender>
 
                                     <AuthorRender resource={comment}>
-                                        <button onClick={this.edit} className="SmallButton" title='Edit Comment'>E</button>
+                                        <button onClick={this.edit} className="SmallButton" title='Edit Comment'><EditIcon /></button>
                                     </AuthorRender>
                                 </div>
 
@@ -101,10 +102,10 @@ export default class MutableComment extends React.Component<Props, State> {
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                        <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' >X</button>
+                                        <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' ><TrashIcon /></button>
                                     </PermittedRender>
 
-                                    <button onClick={this.details} className="SmallButton" title='Cancel Edit'>C</button>
+                                    <button onClick={this.details} className="SmallButton" title='Cancel Edit'><XIcon /></button>
                                     <SubmitBtn />
                                 </div>
 
