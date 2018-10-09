@@ -5,7 +5,12 @@ import { Query, QueryResult, ApolloConsumer } from 'react-apollo';
 import { authStatus } from 'src/util/graphql/clientQueries';
 import history from 'src/util/history';
 import * as classnames from 'classnames';
-import { Home as HomeIcon, LogOut as LogoutIcon } from 'react-feather';
+import {
+    Home as HomeIcon,
+    LogOut as LogoutIcon,
+    LogIn as LoginIcon,
+    UserPlus as SignupIcon,
+} from 'react-feather';
 
 import NavRoutes from './NavRoutes';
 
@@ -56,12 +61,16 @@ class NavBar extends React.Component<Props, {}> {
 
     private renderLoggedOutButtons = () => (
         <React.Fragment>
-            <Link id='signup' to='/signup' title='Sign Up'>
-                <div>Sign Up</div>
+            <Link id='login' to='/login' title='Log In'>
+                <li className='u-flexV u-centerBoth circle'>
+                    <LoginIcon />
+                </li>
             </Link>
 
-            <Link id='login' to='/login' title='Log In'>
-                <div>Log In</div>
+            <Link id='signup' to='/signup' title='Sign Up'>
+                <li className='u-flexV u-centerBoth circle'>
+                    <SignupIcon />
+                </li>
             </Link>
         </React.Fragment>
     );
