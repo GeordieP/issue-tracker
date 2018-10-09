@@ -31,24 +31,38 @@ export default class MutableIssue extends React.Component<Props, State> {
     public render() {
         return (
             <Mutation
-                mutation={deleteIssue}
-                variables={{ id: this.props.issue.id }}
-                onCompleted={history.push.bind(null, this.props.match.url.replace(/\/issues.+/g, '/issues'))}
-                awaitRefetchQueries={true} // wait until query finishes before redirecting to avoid conflicts with FirstIssueRedirect component
+                mutation={updateIssue}
+                variables={{
+                    id: this.props.issue.id,
+                    status: 'Closed'
+                }}
                 refetchQueries={[{
                     query: getIssuesForProject,
                     variables: { project: this.props.match.params.projectID },
                 }]}
             >
-                { (deleteFn: any) => this.state.edit
-                    ? (
-                        <Mutation mutation={updateIssue} onCompleted={this.details}>
-                            { (editFn: any) => this.renderEdit(deleteFn, editFn) }
-                        </Mutation>
-                    ) : (
-                        this.renderDetails(deleteFn)
-                    )
-                }
+                {(closeFn: any) => (
+                    <Mutation
+                        mutation={deleteIssue}
+                        variables={{ id: this.props.issue.id }}
+                        onCompleted={history.push.bind(null, this.props.match.url.replace(/\/issues.+/g, '/issues'))}
+                        awaitRefetchQueries={true} // wait until query finishes before redirecting to avoid conflicts with FirstIssueRedirect component
+                        refetchQueries={[{
+                            query: getIssuesForProject,
+                            variables: { project: this.props.match.params.projectID },
+                        }]}
+                    >
+                        { (deleteFn: any) => this.state.edit
+                            ? (
+                                <Mutation mutation={updateIssue} onCompleted={this.details}>
+                                    { (editFn: any) => this.renderEdit(deleteFn, editFn) }
+                                </Mutation>
+                            ) : (
+                                this.renderDetails(deleteFn, closeFn)
+                            )
+                        }
+                    </Mutation>
+                )}
             </Mutation>
         );
     }
@@ -56,7 +70,7 @@ export default class MutableIssue extends React.Component<Props, State> {
     private edit = () => this.setState({ edit: true });
     private details = () => this.setState({ edit: false });
 
-    private renderDetails(onDelete: any) {
+    private renderDetails(onDelete: any, closeFn: any) {
         const { issue } = this.props;
 
         return (
@@ -84,12 +98,15 @@ export default class MutableIssue extends React.Component<Props, State> {
                                             <EditIcon />
                                         </button>
 
-                                        {/* TODO: Run a mutation to close issue */}
-                                        <button
-                                            className="Button Button--close circle"
-                                            title='Close Issue'>
-                                            <CheckIcon />
-                                        </button>
+                                        {/* only show close button if the issue isn't closed */}
+                                        { issue.status.toLowerCase() === 'closed' ? '' :
+                                            <button
+                                                className="Button Button--close circle"
+                                                title='Close Issue'
+                                                onClick={closeFn}>
+                                                <CheckIcon />
+                                            </button>
+                                        }
                                     </PermittedRender>
                                 </div>
 
