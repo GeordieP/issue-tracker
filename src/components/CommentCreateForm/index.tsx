@@ -29,6 +29,7 @@ export default ({ parentID, parentType, onSubmit, ...props }: Props) => (
             data-testid="createComment_body"
             name="body"
             placeholder="Write your comment"
+            className='u-fullWidth'
         />
 
         <section>
