@@ -28,7 +28,7 @@ describe('Admin create/edit/delete flows', () => {
         cy.contains('New Issue').click();
         const bodyText = 'First issue contents before edit';
         cy.app_fillCreateIssueForm(`${RUN_ID}_Issue-1`, bodyText, 'High');
-        cy.get('[data-testid=createIssue_submit]').click();
+        cy.get('[data-testid="createIssue_submit"]').click();
 
         // did we navigate?
         cy.url().should('contain', '/issues/');
@@ -45,10 +45,10 @@ describe('Admin create/edit/delete flows', () => {
     });
 
     it('Edit issue', () => {
-        cy.contains('Edit Issue').click();
+        cy.get('[data-testid="editIssue"]').click();
         const bodyText = 'First issue contents after edit';
         cy.app_fillEditIssueForm(`${RUN_ID}_Issue-1 EDITED`, bodyText, 'Low');
-        cy.contains('Save Issue').click();
+        cy.get('[data-testid="editIssue_submit"]').click();
 
         // wait for issue details to be rendered, signifying the save completed
         cy.get('.Issue-details');
@@ -63,7 +63,7 @@ describe('Admin create/edit/delete flows', () => {
     });
 
     it('Delete issue', () => {
-        cy.contains('Delete Issue').click();
+        cy.get('[data-testid="deleteIssue"]').click();
         // did we navigate? we deleted the only issue, and should be back on
         // the project details page.
         cy.url().should('contain', '/projectDetails');
@@ -78,13 +78,13 @@ describe('Admin create/edit/delete flows', () => {
             `${RUN_ID}_Issue-2`,
             'Issue for testing tasks and comments.'
         );
-        cy.get('[data-testid=createIssue_submit]').click();
+        cy.get('[data-testid="createIssue_submit"]').click();
 
         // create task
         const taskTitle = 'First Task';
         const taskBodyText = 'First task content before edit';
         cy.app_fillCreateTaskForm(taskTitle, taskBodyText);
-        cy.get('[data-testid=createTask_submit]').click();
+        cy.get('[data-testid="createTask_submit"]').click();
 
         // verify task appeared in task list, and click on it
         cy.get('.IssueView-sidebar').contains(taskTitle).click();
@@ -100,14 +100,15 @@ describe('Admin create/edit/delete flows', () => {
     });
 
     it('Edit task', () => {
-        cy.contains('Edit Task').click();
+        cy.get('[data-testid="editTask"]').click();
+        // did we navigate? we deleted the only issue, and should be back on
         const taskTitle = 'First Task EDITED';
         const taskBodyText = 'First task content edited';
         cy.app_fillEditTaskForm(taskTitle, taskBodyText);
-        cy.contains('Save Task').click();
+        cy.get('[data-testid="editTask_submit"]').click();
 
         // wait for edit button to come back, signifying the save action completed
-        cy.contains('Edit Task');
+        cy.get('[data-testid="editTask"]');
 
         cy.get('.TaskView').within(() => {
             // title
@@ -118,7 +119,7 @@ describe('Admin create/edit/delete flows', () => {
     });
 
     it('Delete task', () => {
-        cy.contains('Delete Task').click();
+        cy.get('[data-testid="deleteTask"]').click();
 
         // did we navigate?
         cy.url().should('not.contain', '/tasks');
@@ -134,28 +135,29 @@ describe('Admin create/edit/delete flows', () => {
         cy.contains('Submit Comment').click();
 
         // verify comment exists
-        cy.get('.MutableComment-commentDetails').should('contain', commentBody);
+        cy.get('.Comment').should('contain', commentBody);
     });
 
     it('Edit issue comment', () => {
-        cy.contains('Edit Comment').click();
+        cy.get('[data-testid="editComment"]').click();
         const commentBody = 'First comment after edit';
-        cy.get('[data-testid=editComment_body]').type(commentBody, typing_noDelay);
-        cy.contains('Save Comment').click();
+        cy.get('[data-testid="editComment_body"]').type(commentBody, typing_noDelay);
+        cy.get('[data-testid="editComment_submit"]').click();
 
         // verify comment was updated
-        cy.get('.MutableComment-commentDetails').should('contain', commentBody);
+        cy.get('.Comment').should('contain', commentBody);
     });
 
     it('Delete issue comment', () => {
-        cy.contains('Delete Comment').click();
-        cy.get('.MutableComment-commentDetails').should('not.exist');
+        // cy.contains('Delete Comment').click();
+        cy.get('[data-testid="deleteComment"]').click();
+        cy.get('.Comment').should('not.exist');
     });
 
     it('Create task, create comment in task', () => {
         const taskTitle = 'Test Task';
         cy.app_fillCreateTaskForm(taskTitle, '');
-        cy.get('[data-testid=createTask_submit]').click();
+        cy.get('[data-testid="createTask_submit"]').click();
 
         // verify task appeared in task list, and click on it
         cy.get('.IssueView-sidebar').contains(taskTitle).click();
@@ -165,26 +167,26 @@ describe('Admin create/edit/delete flows', () => {
         cy.contains('Submit Comment').click();
 
         // verify comment exists
-        cy.get('.MutableComment-commentDetails').should('contain', commentBody);
+        cy.get('.Comment').should('contain', commentBody);
     });
 
     it('Edit task comment', () => {
-        cy.contains('Edit Comment').click();
+        cy.get('[data-testid="editComment"]').click();
 
         const commentBody = 'Task comment after edit';
-        cy.get('[data-testid=editComment_body]').type(commentBody, typing_noDelay);
-        cy.contains('Save Comment').click();
+        cy.get('[data-testid="editComment_body"]').type(commentBody, typing_noDelay);
+        cy.get('[data-testid="editComment_submit"]').click();
 
         // verify comment was updated
-        cy.get('.MutableComment-commentDetails').should('contain', commentBody);
+        cy.get('.Comment').should('contain', commentBody);
     });
 
     it('Delete task comment', () => {
-        cy.contains('Delete Comment').click();
-        cy.get('.MutableComment-commentDetails').should('not.exist');
+        cy.get('[data-testid="deleteComment"]').click();
+        cy.get('.Comment').should('not.exist');
     });
 
     it('Log out', () => {
-        cy.contains('Log Out').click();
+        cy.get('#logout').click();
     })
 });

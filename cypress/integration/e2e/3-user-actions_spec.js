@@ -32,15 +32,16 @@ describe('Admin setup', () => {
         // create issue
         cy.contains('New Issue').click();
         cy.app_fillCreateIssueForm(issueName, issueBody);
-        cy.get('[data-testid=createIssue_submit]').click();
+        cy.get('[data-testid="createIssue_submit"]').click();
         cy.url().should('contain', '/issues/');
 
         // comment on issue
-        cy.get('[data-testid="createComment_body"]').type(issueCommentBody, typing_noDelay); cy.contains('Submit Comment').click();
+        cy.get('[data-testid="createComment_body"]').type(issueCommentBody, typing_noDelay);
+        cy.contains('Submit Comment').click();
 
         // create task and navigate to it
         cy.app_fillCreateTaskForm(taskTitle, taskBody);
-        cy.get('[data-testid=createTask_submit]').click();
+        cy.get('[data-testid="createTask_submit"]').click();
         cy.get('.IssueView-sidebar').contains(taskTitle).click();
 
         // comment on task
@@ -48,7 +49,7 @@ describe('Admin setup', () => {
         cy.contains('Submit Comment').click();
 
         // log out
-        cy.contains('Log Out').click();
+        cy.get('#logout').click();
     });
 });
 
@@ -67,11 +68,11 @@ describe('User create/edit/delete flows', () => {
 
         // verify admin comment is visible and not editable
         cy.contains(issueCommentBody);
-        cy.contains('Edit Comment').should('not.exist');
+        cy.get('[data-testid="editComment"]').should('not.exist');
 
         // verify issue buttons are not visible
-        cy.contains('Edit Issue').should('not.exist');
-        cy.contains('Delete Issue').should('not.exist');
+        cy.get('[data-testid="editIssue"]').should('not.exist');
+        cy.get('[data-testid="deleteIssue"]').should('not.exist');
     });
 
     it('Task page permissions verification', () => {
@@ -86,11 +87,11 @@ describe('User create/edit/delete flows', () => {
 
         // verify admin comment is visible and not editable
         cy.contains(taskCommentBody);
-        cy.contains('Edit Comment').should('not.exist');
+        cy.get('[data-testid="editComment"]').should('not.exist');
 
-        // verify task buttons are not visible
-        cy.contains('Edit Task').should('not.exist');
-        cy.contains('Delete Task').should('not.exist');
+        // verify issue buttons are not visible
+        cy.get('[data-testid="editIssue"]').should('not.exist');
+        cy.get('[data-testid="deleteIssue"]').should('not.exist');
     });
 
     it('Task page comments', () => {
@@ -105,15 +106,15 @@ describe('User create/edit/delete flows', () => {
         cy.contains(myCommentBody);
 
         // edit the comment
-        cy.contains('Edit Comment').click();
-        cy.get('[data-testid=editComment_body]').clear().type(myCommentBody_edit, typing_noDelay);
-        cy.contains('Save Comment').click();
+        cy.get('[data-testid="editComment"]').click();
+        cy.get('[data-testid="editComment_body"]').clear().type(myCommentBody_edit, typing_noDelay);
+        cy.get('[data-testid="editComment_submit"]').click();
 
         // verify comment was edited and is visible
         cy.contains(myCommentBody_edit);
 
         // delete comment
-        cy.contains('Delete Comment').click();
+        cy.get('[data-testid="deleteComment"]').click();
 
         // verify comment was deleted
         cy.contains(myCommentBody_edit).should('not.exist');
@@ -134,24 +135,24 @@ describe('User create/edit/delete flows', () => {
         cy.contains('Submit Comment').click();
 
         // verify comment was created and is visible
-        cy.get('.MutableComment-commentDetails').should('contain', myCommentBody);
+        cy.get('.Comment').should('contain', myCommentBody);
 
         // edit the comment
-        cy.contains('Edit Comment').click();
-        cy.get('[data-testid=editComment_body]').clear().type(myCommentBody_edit, typing_noDelay);
-        cy.contains('Save Comment').click();
+        cy.get('[data-testid="editComment"]').click();
+        cy.get('[data-testid="editComment_body"]').clear().type(myCommentBody_edit, typing_noDelay);
+        cy.get('[data-testid="editComment_submit"]').click();
 
         // verify comment was edited and is visible
         cy.contains(myCommentBody_edit);
 
         // delete comment
-        cy.contains('Delete Comment').click();
+        cy.get('[data-testid="deleteComment"]').click();
 
         // verify comment was deleted
         cy.contains(myCommentBody_edit).should('not.exist');
     });
 
     it('Log out user', () => {
-        cy.contains('Log Out').click();
+        cy.get('#logout').click();
     });
 });

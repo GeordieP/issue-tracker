@@ -66,11 +66,25 @@ export default class MutableTask extends React.Component<Props, State> {
                             <section className='u-flexH u-centerCrossAxis u-fullWidth'>
                                 <div className='u-flexH'>
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                        <button onClick={onDelete} className="SmallButton SmallButton--danger"><TrashIcon /></button>
+                                        <button
+                                        onClick={onDelete}
+                                        className="SmallButton SmallButton--danger"
+                                        title='Delete Task'
+                                        data-testid='deleteTask'
+                                        >
+                                            <TrashIcon />
+                                        </button>
                                     </PermittedRender>
 
                                     <PermittedRender requiredLevel={PermissionLevel.Edit} resource={task}>
-                                        <button onClick={this.edit} className="Button Button--edit circle"><EditIcon /></button>
+                                        <button
+                                            onClick={this.edit}
+                                            className="Button Button--edit circle"
+                                            title='Edit Task'
+                                            data-testid='editTask'
+                                        >
+                                            <EditIcon />
+                                        </button>
                                     </PermittedRender>
                                 </div>
 
@@ -97,9 +111,23 @@ export default class MutableTask extends React.Component<Props, State> {
                                 <div className='u-flexH u-centerCrossAxis'>
                                     <div className='u-flexH'>
                                         <PermittedRender requiredLevel={PermissionLevel.Delete} resource={task}>
-                                            <button onClick={onDelete} className="SmallButton SmallButton--danger"><TrashIcon /></button>
+                                            <button
+                                                onClick={onDelete}
+                                                className="SmallButton SmallButton--danger"
+                                                title='Delete Task'
+                                                data-testid='deleteTask'
+                                            >
+                                                <TrashIcon />
+                                            </button>
                                         </PermittedRender>
-                                        <button onClick={this.details} className="Button circle"><XIcon /></button>
+                                        <button
+                                            onClick={this.details}
+                                            className="Button circle"
+                                            title='Cancel Edit'
+                                            data-testid='cancelEdit'
+                                        >
+                                            <XIcon />
+                                        </button>
                                         <SubmitBtn />
                                     </div>
                                     <TitleField />

@@ -85,6 +85,7 @@ export default class MutableIssue extends React.Component<Props, State> {
                                         <button
                                             onClick={onDelete}
                                             className="SmallButton SmallButton--danger"
+                                            data-testid='deleteIssue'
                                             title='Delete Issue'>
                                             <TrashIcon />
                                         </button>
@@ -94,6 +95,7 @@ export default class MutableIssue extends React.Component<Props, State> {
                                         <button
                                             onClick={this.edit}
                                             className="Button Button--edit circle"
+                                            data-testid='editIssue'
                                             title='Edit Issue'>
                                             <EditIcon />
                                         </button>
@@ -103,6 +105,7 @@ export default class MutableIssue extends React.Component<Props, State> {
                                             <button
                                                 className="Button Button--close circle"
                                                 title='Close Issue'
+                                                data-testid='closeIssue'
                                                 onClick={closeFn}>
                                                 <CheckIcon />
                                             </button>
@@ -136,12 +139,18 @@ export default class MutableIssue extends React.Component<Props, State> {
                                         <button
                                             onClick={onDelete}
                                             className="SmallButton SmallButton--danger circle"
+                                            data-testid='deleteIssue'
                                             title='Delete Issue'
                                         >
                                             <TrashIcon />
                                         </button>
                                     </PermittedRender>
-                                    <button onClick={this.details} className="Button circle" title='Cancel Edit'>
+                                    <button
+                                        onClick={this.details}
+                                        className="Button circle"
+                                        data-testid='cancelEdit'
+                                        title='Cancel Edit'
+                                    >
                                         <XIcon />
                                     </button>
                                     <SubmitBtn />

@@ -73,11 +73,25 @@ export default class MutableComment extends React.Component<Props, State> {
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                        <button onClick={onDelete} className="SmallButton" title='Delete Comment'><TrashIcon /></button>
+                                        <button
+                                            onClick={onDelete}
+                                            className="SmallButton"
+                                            title='Delete Comment'
+                                            data-testid='deleteComment'
+                                        >
+                                            <TrashIcon />
+                                        </button>
                                     </PermittedRender>
 
                                     <AuthorRender resource={comment}>
-                                        <button onClick={this.edit} className="SmallButton" title='Edit Comment'><EditIcon /></button>
+                                        <button
+                                            onClick={this.edit}
+                                            className="SmallButton"
+                                            title='Edit Comment'
+                                            data-testid='editComment'
+                                        >
+                                            <EditIcon />
+                                        </button>
                                     </AuthorRender>
                                 </div>
 
@@ -110,10 +124,24 @@ export default class MutableComment extends React.Component<Props, State> {
                                     <Author />
 
                                     <PermittedRender requiredLevel={PermissionLevel.Delete} resource={comment}>
-                                        <button onClick={onDelete} className="SmallButton SmallButton--danger" title='Delete Comment' ><TrashIcon /></button>
+                                        <button
+                                            onClick={onDelete}
+                                            className="SmallButton SmallButton--danger"
+                                            title='Delete Comment'
+                                            data-testid='deleteComment'
+                                        >
+                                            <TrashIcon />
+                                        </button>
                                     </PermittedRender>
 
-                                    <button onClick={this.details} className="SmallButton" title='Cancel Edit'><XIcon /></button>
+                                    <button
+                                        onClick={this.details}
+                                        className="SmallButton"
+                                        title='Cancel Edit'
+                                        data-testid='cancelEdit'
+                                    >
+                                        <XIcon />
+                                    </button>
                                     <SubmitBtn />
                                 </div>
 
