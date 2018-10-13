@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { HTMLAttributes } from 'react';
 import * as classnames from 'classnames';
+import { capitalizeFirstChar } from 'src/util/strings';
 
 interface Props extends HTMLAttributes<HTMLElement> {
     issue: Issue;
@@ -15,12 +16,12 @@ export default ({ issue, className, ...props }: Props) => (
             <h4 data-testid='issueListItem_date'>
                 {new Date(issue.dateUpdated).toDateString()}
             </h4>
-            <h4>{issue.type} | {issue.severity}</h4>
+            <h4>{capitalizeFirstChar(issue.type)} | {capitalizeFirstChar(issue.severity)}</h4>
         </div>
 
         <div className="u-flexH u-stretchH u-spaceBetween">
             <h4 className="issueDetails">{issue.creator.username}</h4>
-            <h4>{issue.status}</h4>
+            <h4>{capitalizeFirstChar(issue.status)}</h4>
         </div>
     </div>
 );

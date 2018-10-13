@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { HTMLAttributes } from 'react';
+import { capitalizeFirstChar as capitalize } from 'src/util/strings';
 
 import './Issue.css';
 
@@ -8,8 +9,6 @@ interface Props extends HTMLAttributes<HTMLElement> {
     props?: any[];
     children: any;
 }
-
-const capitalize = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
 export default ({ issue, children, ...props }: Props) => {
     const renderTitle = () => (
